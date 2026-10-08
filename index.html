@@ -17,14 +17,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vutranpk.github.io/cherry/">
     <meta property="og:title" content="Triển Lãm Tranh Cherry x K COFFEE | Sắc Màu Yêu Thương">
-    <meta property="og:description" content="Khám phá hành trình hội họa và 130+ tác phẩm đầy cảm xúc của họa sĩ nhí 11 tuổi Cherry. Chung tay lan tỏa yêu thương vì cộng đồng cùng K COFFEE.">
+    <meta property="og:description" content="Khám phá hành trình hội họa và 130+ tác phẩm đầy cảm xúc của họa sĩ nhí 11 tuổi Cherry. Chung tay chia sẻ yêu thương vì cộng đồng cùng K COFFEE.">
     <meta property="og:image" content="https://vutranpk.github.io/cherry/bannerhero.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://vutranpk.github.io/cherry/">
     <meta property="twitter:title" content="Triển Lãm Tranh Cherry x K COFFEE | Sắc Màu Yêu Thương">
-    <meta property="twitter:description" content="Khám phá hành trình hội họa và 130+ tác phẩm đầy cảm xúc của họa sĩ nhí 11 tuổi Cherry. Chung tay lan tỏa yêu thương vì cộng đồng cùng K COFFEE.">
+    <meta property="twitter:description" content="Khám phá hành trình hội họa và 130+ tác phẩm đầy cảm xúc của họa sĩ nhí 11 tuổi Cherry. Chung tay chia sẻ yêu thương vì cộng đồng cùng K COFFEE.">
     <meta property="twitter:image" content="https://vutranpk.github.io/cherry/bannerhero.jpg">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -150,7 +150,7 @@
             width: 100%;
             transform: translateY(-50%);
             font-size: 28vw;
-            font-family: var(--f-sans);
+            font-family: var(--f-script);
             font-weight: 300;
             color: var(--c-accent);
             opacity: 0.03;
@@ -158,6 +158,7 @@
             pointer-events: none;
             letter-spacing: -5px;
             overflow: hidden;
+            text-transform: capitalize;
         }
         .hero { 
             min-height: 100vh; 
@@ -195,6 +196,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--c-text);
+            font-weight: var(--fw-regular);
         }
         
         .pill-btn {
@@ -305,11 +307,11 @@
         .metric-item:hover { background: rgba(255,255,255,0.03); }
         .metric-item-featured { background: var(--c-bg-hero); color: var(--c-bg); justify-content: space-between; }
         .metric-item-featured:hover { background: var(--c-text); }
-        .metric-item-featured .metric-desc { color: var(--c-bg); font-weight: 600; }
+        .metric-item-featured .metric-desc { color: var(--c-bg); font-weight: var(--fw-bold); }
         .metric-item-featured .vibe-heading { color: var(--c-bg); }
-        .metric-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--c-text-mut); margin-bottom: var(--sp-lg); }
-        .metric-value { font-size: clamp(3rem, 5vw, 4.5rem); font-family: var(--f-sans); line-height: 1; margin: auto 0 10px; font-weight: 700; letter-spacing: -2px; }
-        .metric-desc { font-size: 1rem; color: var(--c-text); text-transform: uppercase; letter-spacing: 1px; }
+        .metric-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--c-text-mut); margin-bottom: var(--sp-lg); font-weight: var(--fw-bold); }
+        .metric-value { font-size: clamp(3rem, 5vw, 4.5rem); font-family: var(--f-sans); line-height: 1; margin: auto 0 10px; font-weight: var(--fw-bold); letter-spacing: -2px; }
+        .metric-desc { font-size: 1rem; color: var(--c-text); text-transform: uppercase; letter-spacing: 1px; font-weight: var(--fw-bold)  }
 
         .author-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; background: var(--c-bg); }
         .author-content-wrap { padding: var(--sp-xl) var(--sp-xl); display: flex; flex-direction: column; justify-content: center; padding-left: calc(max(var(--sp-lg), (100vw - 1400px) / 2)); }
@@ -341,8 +343,8 @@
             gap: 5vw;
             will-change: transform;
         }
-        .gallery-intro { flex: 0 0 30vw; display: flex; flex-direction: column; justify-content: flex-start; }
-        .gallery-ending { flex: 0 0 40vw; display: flex; flex-direction: column; justify-content: flex-start; }
+        .gallery-intro { flex: 0 0 30vw; display: flex; flex-direction: column; justify-content: center; }
+        .gallery-ending { flex: 0 0 40vw; display: flex; flex-direction: column;     justify-content: center; padding: var(--sp-md); }
         .gallery-ending-title { font-size: var(--fs-h2);font-family: var(--f-script); line-height: 1; margin-bottom: var(--sp-md); white-space: nowrap; }
 
         .art-card { height: 60vh; position: relative; display: flex; flex-direction: column; justify-content: flex-start; gap: 20px; flex: none; }
@@ -351,6 +353,10 @@
         }
         .art-card-info {
             text-align: center;
+        }
+        .art-card-price {
+            font-weight: var(--fw-bold);
+            color:  #e61b1b;
         }
         .art-card-badge {
             background-image: linear-gradient(to right, #e61b1b, #ff6f00);
@@ -400,7 +406,7 @@
         .impact-desc{margin: 0 auto;}
         .impact-stats-wrap {max-width: 800px; margin: var(--sp-md) auto; display: flex; justify-content: space-between; gap: var(--sp-md);}
         .impact-stat-item {text-align: center;}
-        .impact-number { font-size: clamp(3.5rem, 6vw, 5rem); font-family: var(--f-sans); font-weight: 700; color: var(--c-accent); line-height: 1; margin-bottom: 15px; letter-spacing: -2px; }
+        .impact-number { font-size: clamp(3.5rem, 6vw, 5rem); font-family: var(--f-sans); font-weight:var(--fw-bold); color: var(--c-accent); line-height: 1; margin-bottom: 15px; letter-spacing: -2px; }
         .impact-label { font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 1px; color: var(--c-text-mut); }
         .impact-sub { font-size: 0.85rem; color: var(--c-text-mut); margin-top: 5px; }
         
@@ -419,11 +425,11 @@
         #merch, #contact { min-height: 100vh; display: flex; align-items: center; width: 100%; }
         #schedule .container, #merch .container, #contact .container { width: 100%; }
         #schedule .container { display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .schedule-timeline { border-left: none; padding-left: 0; position: relative; margin-top: var(--sp-sm); text-align: center; max-width: 600px; width: 100%; }
+        .schedule-timeline { border-left: none; padding-left: 0; position: relative; margin-top: var(--sp-sm); text-align: center; width: 100%; display: flex; gap: var(--sp-lg); justify-content: center; }
         .schedule-item { position: relative; margin-bottom: var(--sp-sm);; border-bottom: 1px dashed rgba(255,255,255,0.1); }
         .schedule-item:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
         .schedule-dot { display: none; }
-        .schedule-date { font-size: var(--fs-small); color: var(--c-text-mut); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .schedule-date { font-size: var(--fs-small); color: var(--c-text-mut); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; font-weight: var(--fw-medium); }
         .schedule-venue { font-size: var(--fs-h3); font-weight: var(--fw-medium); margin-bottom: var(--sp-xs); text-transform: uppercase; }
         .schedule-details { font-size: var(--fs-body); color: var(--c-text-mut); max-width: 500px; }
 
@@ -437,7 +443,7 @@
         .merch-img-back:hover { opacity: 1; transform: scale(1.04) translateY(-4px); z-index: 3; }
 
         #contact { background: var(--c-bg); overflow: hidden; }
-        .contact-grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--sp-xl); align-items: start; }
+        .contact-grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--sp-xl); align-items: center; }
         .contact-desc { margin-bottom: var(--sp-md); }
         .contact-info-list { font-size: 14px; color: var(--c-text-mut); line-height: 2; }
         .contact-info-list p i { margin-right: 10px; }
@@ -504,7 +510,7 @@
                 transition: right 0.3s ease; z-index: 999; overflow-y: auto; padding: var(--sp-lg);
             }
             .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.2rem; font-weight: 600; }
+            .nav-links a { font-size: 1.2rem; font-weight: var(--fw-regular); }
             
             /* Hero */
             .hero { padding-top: 100px !important; }
@@ -577,7 +583,7 @@
             scroll-snap-align: start;
             display: flex;
             flex-direction: column;
-            gap: var(--sp-sm);
+            gap: var(--sp-xs);
         }
         .news-card img {
             width: 100%;
@@ -589,40 +595,42 @@
             font-size: var(--fs-body); 
             line-height: 1.4; 
             margin-bottom: 10px; 
-            font-weight: 500; 
+            font-weight: var(--fw-medium); 
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .news-link { font-size: var(--fs-small); font-weight: 600; color: var(--c-accent); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+        .news-link { font-size: var(--fs-small); font-weight: var(--fw-medium); color: var(--c-accent); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
         
         .testimonial-slider {
             display: flex; gap: var(--sp-md); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
         }
         .testimonial-slider::-webkit-scrollbar { display: none; }
         .testi-item { 
-            flex: 0 0 calc(40% - var(--sp-md));
+            flex: 0 0 calc(50% - var(--sp-md));
             scroll-snap-align: center;
             padding: var(--sp-sm);
             background: var(--c-bg);
             display: flex;
             flex-direction: column;
             justify-content: center;
-    border: 1px solid var(--c-border);
+            border: 1px solid var(--c-border);
+            align-items: center;
         }
         .testi-quote { font-family: var(--f-sans); font-size: 1rem; line-height: 1.6; margin-bottom: var(--sp-sm); text-align: left; }
-        .testi-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; text-align: left; font-weight: bold; }
+        .testi-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; text-align: left; font-weight: var(--fw-bold); }
         
         @media (max-width: 1023px) {
             .news-card { flex: 0 0 calc(50% - (var(--sp-lg) / 2)); }
         }
         @media (max-width: 767px) {
-            .testi-item { flex: 0 0 84vw; }
-        }
-        @media (max-width: 767px) {
-            .news-card { flex: 0 0 50vw; }
+            .testi-item { flex: 0 0 100%; }
+            .news-card { flex: 0 0 50%; }
+            .schedule-timeline {
+                flex-direction: column;
+            }
         }
                 .testi-nav { display: flex; justify-content: center; gap: 15px; margin-top: var(--sp-md); }
         .testi-nav-btn { background: var(--c-text); color: var(--c-bg); border: none; width: 40px; height: 40px; cursor: pointer; transition: opacity 0.3s ease; }
@@ -719,7 +727,7 @@
             background: #d32f2f;
             color: #fff;
             font-family: var(--f-sans);
-            font-weight: 900;
+            font-weight:;
             font-size: 1.5rem;
             padding: 10px 20px;
             transform: rotate(-10deg);
@@ -921,7 +929,7 @@
 
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
-        <div class="watermark">CHERRY</div>
+        <div class="watermark">Cherry</div>
         <div class="container hero-inner">
             <div class="hero-content">
                 <p class="tagline"><span class="brand-kcoffee">K&nbsp;COFFEE</span> x Cherry</p>
@@ -958,7 +966,7 @@
             </div>
             <div class="metric-item">
                 <span class="metric-label">Mục tiêu</span>
-                <h3 class="metric-value" style="font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1.1; margin-top: auto; padding-top: 15px; font-weight: 300;">BV. Nhi Đồng<br>1 & 2</h3>
+                <h3 class="metric-value" style="font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1.1; margin-top: auto; padding-top: 15px; font-weight: var(--fw-medium);">BV. Nhi Đồng<br>1 & 2</h3>
                 <p class="metric-desc">Hỗ trợ bệnh nhi</p>
             </div>
         </div>
@@ -988,6 +996,7 @@
 
     <!-- VIBE GALLERY SECTION (HORIZONTAL SCROLL) -->
     <section id="gallery" class="sticky-container">
+    
         <div class="sticky-wrapper">
             <div class="horizontal-track">
                   <!-- Intro Title -->
@@ -1165,17 +1174,17 @@
             <div class="impact-stats-wrap">
                 <div class="impact-stat-item">
                     <div class="impact-number stat-counter" data-target="51">0</div>
-                    <div class="impact-label">Bức tranh đã bán</div>
+                    <div class="impact-label" style="font-weight: var(--fw-bold);">Bức tranh đã bán</div>
                     <div class="impact-sub">(2024 - 2025)</div>
                 </div>
                 <div class="impact-stat-item">
-                    <div class="impact-number"><span class="stat-counter" data-target="400">0</span><span class="impact-unit">tr</span> +</div>
-                    <div class="impact-label">VNĐ Doanh thu</div>
+                    <div class="impact-number"><span class="stat-counter" data-target="400">0</span>+</div>
+                    <div class="impact-label" style="font-weight: var(--fw-bold);">triệu VNĐ Doanh thu</div>
                     <div class="impact-sub">(Đóng góp 100%)</div>
                 </div>
                 <div class="impact-stat-item">
                     <div class="impact-number impact-number-accent stat-counter" data-target="53">0</div>
-                    <div class="impact-label">Ca phẫu thuật</div>
+                    <div class="impact-label" style="font-weight: var(--fw-bold);">Ca phẫu thuật</div>
                     <div class="impact-sub">(Được hỗ trợ chi phí)</div>
                 </div>
             </div>
@@ -1189,10 +1198,10 @@
 
     <!-- NEWS SLIDER SECTION -->
     <section class="section-padding" id="news" style="background: var(--c-bg); position: relative; overflow: hidden;">
-        <div class="watermark" style="top: 20%; right: -5%; left: auto; transform: none; text-align: right; letter-spacing: -2px;">NEWS</div>
+        <div class="watermark" style="top: 20%; right: -5%; left: auto; transform: none; text-align: right; letter-spacing: -2px;">News</div>
         <div class="container" style="position: relative; z-index: 2;">
             <p class="tagline">Báo Chí & Tin Tức</p>
-            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md);">Lan Tỏa Hành Trình</h2>
+            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md);">Chỉa sẻ Hành Trình</h2>
             <div class="news-slider">
                 <div class="news-card">
                     <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=80" alt="News 1">
@@ -1232,13 +1241,11 @@
 
     <!-- TESTIMONIAL SECTION -->
     <section class="section-padding" id="testimonials" style="background: var(--c-bg); position: relative; overflow: hidden;">
-        <div class="watermark" style="top: 30%; right: -5%; left: auto; transform: none; text-align: right; letter-spacing: -2px;">REVIEW</div>
         <div class="container" style="position: relative; z-index: 2;">
-            <p class="tagline">Góc Nhìn</p>
-            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md);">Lời Nhắn Nhủ</h2>
+            <p class="tagline" style=" text-align:center;">Góc Nhìn</p>
+            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md); text-align:center;">Lời Nhắn Nhủ</h2>
             <div class="testimonial-wrapper" style="position: relative;">
                 <div class="testimonial-slider" id="testi-slider">
-
                 <div class="testi-item">
                     <p class="testi-quote">"Những bức tranh không chỉ đẹp về mặt nghệ thuật mà còn mang trong mình một tâm hồn vô cùng trong trẻo, hồn nhiên. Mỗi nét vẽ đều chứa đựng tình yêu thương."</p>
                     <p class="testi-author">- Chuyên gia phê bình nghệ thuật</p>
@@ -1272,32 +1279,34 @@
             <div class="schedule-timeline">
                 
                 <!-- Event 1 -->
-                <div class="schedule-item">
-                    <div class="schedule-dot schedule-dot-active"></div>
-                    <p class="schedule-date schedule-date-active">11/10 - 23/10/2026</p>
-                    <h3 class="schedule-venue"><span class="brand-kcoffee">K&nbsp;COFFEE</span> Mỹ Thái</h3>
-                    <p class="vibe-text">41 Đường 17, Khu phố Mỹ Thái 2, Phường Tân Phú, Quận 7, TP.HCM</p>
+                 <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80" alt="News 4">
+                    <div class="news-content">
+                        <div class="schedule-dot schedule-dot-active"></div>
+                        <p class="schedule-date schedule-date-active">11/10 - 23/10/2026</p>
+                        <h3 class="schedule-venue"><span class="brand-kcoffee">K&nbsp;COFFEE</span><br/>Mỹ Thái</h3>
+                        <p class="vibe-text">41 Đường 17, Khu phố Mỹ Thái 2, Phường Tân Phú, Quận 7, TP.HCM</p>
+                    </div>
                 </div>
-                
-                <!-- Event 2 -->
-                <div class="schedule-item">
-                    <div class="schedule-dot schedule-dot-upcoming"></div>
-                    <p class="schedule-date schedule-date-upcoming">25/10 - 07/11/2026</p>
-                    <h3 class="schedule-venue schedule-venue-upcoming"><span class="brand-kcoffee">K&nbsp;COFFEE</span> Nguyễn Thái Bình</h3>
-                    <p class="vibe-text">156-158 Nguyễn Thái Bình, Phường Bến Thành, Quận 1, TP.HCM</p>
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80" alt="News 4">
+                    <div class="news-content">
+                        <div class="schedule-dot schedule-dot-upcoming"></div>
+                        <p class="schedule-date schedule-date-upcoming">25/10 - 07/11/2026</p>
+                        <h3 class="schedule-venue schedule-venue-upcoming"><span class="brand-kcoffee">K&nbsp;COFFEE</span><br/>Nguyễn Thái Bình</h3>
+                        <p class="vibe-text">156-158 Nguyễn Thái Bình, Phường Bến Thành, Quận 1, TP.HCM</p>
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- MERCHANDISE SECTION -->
     <section class="section-padding" id="merch" style="background: var(--c-bg); position: relative; overflow: hidden;">
-        <div class="watermark" style="top: 15%; right: -5%; left: auto; transform: none; text-align: right; letter-spacing: -2px;">MERCH</div>
         <div class="container" style="position: relative; z-index: 2;">
-            <p class="tagline"><span class="brand-kcoffee">K&nbsp;COFFEE</span> x Cherry</p>
-            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md);">Sản phẩm &<br/>Lan tỏa yêu thương</h2>
-            <div style="max-width: 600px; margin-bottom: 40px; font-size: 1.1rem; color: var(--c-text-mut);">
+            <p class="tagline" style=" text-align:center;"><span class="brand-kcoffee">K&nbsp;COFFEE</span> x Cherry</p>
+            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md); text-align:center;">Sản phẩm</h2>
+            <div style="max-width: 600px; margin:0 auto  40px auto; font-size: 1.1rem; color: var(--c-text-mut); text-align:center;">
                 <p><span class="brand-kcoffee">K&nbsp;COFFEE</span> vinh dự mang những nét vẽ của bé Cherry lên các sản phẩm túi Canvas và túi PP dệt. Đặc biệt, 50% doanh thu từ việc bán túi sẽ tiếp tục được sử dụng để hỗ trợ các bệnh nhi và trẻ em có hoàn cảnh khó khăn.</p>
             </div>
             
@@ -1331,7 +1340,7 @@
                 </div>
                 <button class="merch-nav merch-next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
-            <div style="text-align: left;"><a href="#" class="pill-btn" style="margin-top: 20px;">Đồng hành</a></div>
+            <div style="text-align: center;"><a href="#" class="pill-btn" style="margin-top: 20px;">Đồng hành</a></div>
         </div>
     </section>
       <!-- CONTACT SECTION -->
@@ -1368,30 +1377,31 @@
         <div class="container">
             <!-- Footer Branding -->
             <div style="text-align: center; margin-bottom: var(--sp-xl);">
-                <h2 class="vibe-heading" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; margin-bottom: 10px;">Cherry <span style="font-family: var(--f-sans); font-weight: 300; font-size: 0.6em; opacity: 0.5; vertical-align: middle;">&times;</span> K COFFEE</h2>
-                <p style="font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--c-text-mut);">Lan Tỏa Yêu Thương</p>
+                <img style="max-width: 300px; width: 60%;" src="logokc2.png" alt="K COFFEE Logo">
+                <!-- <h2 class="vibe-heading" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; margin-bottom: 10px;">Cherry <span style="font-family: var(--f-sans); font-weight: 300; font-size: 0.6em; opacity: 0.5; vertical-align: middle;">&times;</span> K COFFEE</h2>
+                <p style="font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--c-text-mut);">Chia sẻ Yêu Thương</p> -->
             </div>
 
             <!-- Footer Info -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); padding: 40px 0;">
                 
                 <!-- Col 1: Quỹ Thiện Nguyện (Mua tranh) -->
-                <div>
+                <div style="text-align: left;">
                     <h4 style="font-family: var(--f-sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--c-text); margin-bottom: 20px;">Liên Hệ Quỹ Thiện Nguyện</h4>
                     <div style="font-size: 0.95rem; line-height: 1.8; color: var(--c-text-mut);">
-                        <p><strong style="color: var(--c-text); font-weight: 500;">Hotline:</strong> 0942 560 088 — 0902 983 719 — 0913 921 089</p>
-                        <p><strong style="color: var(--c-text); font-weight: 500;">Email:</strong> admin@phucsinh.com</p>
-                        <p><strong style="color: var(--c-text); font-weight: 500;">Website:</strong> cherry.kcoffee.vn</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500; width:60px;display: inline-block;">Hotline</strong>: 0942 560 088 — 0902 983 719 — 0913 921 089</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500; width:60px;display: inline-block;">Email</strong>: admin@phucsinh.com</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500; width:60px; display: inline-block;">Website</strong>: cherry.kcoffee.vn</p>
                     </div>
                 </div>
 
                 <!-- Col 2: Đơn vị tổ chức (Phúc Sinh) -->
-                <div>
+                <div style="text-align: left;">
                     <h4 style="font-family: var(--f-sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--c-text); margin-bottom: 20px;">Đơn Vị Tổ Chức (Phúc Sinh Corp)</h4>
                     <div style="font-size: 0.95rem; line-height: 1.8; color: var(--c-text-mut);">
-                        <p><strong style="color: var(--c-text); font-weight: 500;">VPĐD:</strong> 246-248 Võ Văn Kiệt, P. Cầu Ông Lãnh, Quận 1, TP.HCM</p>
-                        <p><strong style="color: var(--c-text); font-weight: 500;">Trụ sở:</strong> Số 61 Đường 41, Phường Khánh Hội, Quận 4, TP.HCM</p>
-                        <p><strong style="color: var(--c-text); font-weight: 500;">Liên hệ:</strong> 028 3836.4019 — cs@phucsinhconsumer.com</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500; width:60px;display: inline-block;">VPĐD</strong>: 246-248 Võ Văn Kiệt, P. Cầu Ông Lãnh, Quận 1, TP.HCM</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500; width:60px;display: inline-block;">Trụ sở</strong>: Số 61 Đường 41, Phường Khánh Hội, Quận 4, TP.HCM</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500; width:60px;display: inline-block;">Liên hệ</strong>: 028 3836.4019 — cs@phucsinhconsumer.com</p>
                     </div>
                 </div>
             </div>
@@ -1399,7 +1409,7 @@
             <!-- Copyright & Legal -->
             <div class="footer-bottom" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; padding-top: 20px; font-size: 0.8rem; color: var(--c-text-mut);">
                 <p>&copy; 2026 K COFFEE & Cherry. All rights reserved.</p>
-                <p style="text-align: right; opacity: 0.8;">Giấy ĐKKD: 0314195575 (Sở KH&ĐT TP.HCM cấp 11/01/2017)</p>
+                <p style="text-align: right; opacity: 0.8; font-style: italic;">Giấy ĐKKD: 0314195575 (Sở KH&ĐT TP.HCM cấp 11/01/2017)</p>
             </div>
         </div>
     </footer>
