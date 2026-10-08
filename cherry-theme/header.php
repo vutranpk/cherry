@@ -59,12 +59,12 @@ if(empty(\)) {
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="K COFFEE Logo">
         </a>
         <nav class="nav-links" id="nav-links">
-            <a href="<?php echo home_url('#about'); ?>">Tác giả</a>
-            <a href="<?php echo home_url('#gallery'); ?>">Tác phẩm</a>
-            <a href="<?php echo home_url('#history'); ?>">Hành trình</a>
-            <a href="<?php echo home_url('#schedule'); ?>">Lịch trình</a>
-            <a href="<?php echo home_url('#merch'); ?>">Cửa hàng</a>
-            <a href="<?php echo home_url('#contact'); ?>">Liên hệ</a>
+            <a href="<?php echo home_url('#about'); ?>"><?php cherry_e('Tác giả'); ?></a>
+            <a href="<?php echo home_url('#gallery'); ?>"><?php cherry_e('Tác phẩm'); ?></a>
+            <a href="<?php echo home_url('#history'); ?>"><?php cherry_e('Hành trình'); ?></a>
+            <a href="<?php echo home_url('#schedule'); ?>"><?php cherry_e('Lịch trình'); ?></a>
+            <a href="<?php echo home_url('#merch'); ?>"><?php cherry_e('Cửa hàng'); ?></a>
+            <a href="<?php echo home_url('#contact'); ?>"><?php cherry_e('Liên hệ'); ?></a>
         </nav>
         <div class="header-actions">
             <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Menu điều hướng" aria-controls="nav-links">

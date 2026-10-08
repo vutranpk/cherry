@@ -250,3 +250,91 @@ function cherry_enable_maintenance_mode() {
         die();
     }
 }
+
+// ==========================================
+// POLYLANG MULTILINGUAL SUPPORT
+// ==========================================
+function cherry_register_strings() {
+    if (function_exists('pll_register_string')) {
+        \ = array(
+            'Triển lãm nghệ thuật Vị Nhân Sinh',
+            'Lan tỏa yêu thương qua từng nét vẽ. Mỗi tác phẩm là một câu chuyện, một hy vọng gửi đến các em nhỏ có hoàn cảnh khó khăn.',
+            'Khám Phá Bộ Sưu Tập',
+            'Cuộn xuống',
+            'Câu Chuyện',
+            'Cherry là',
+            'ai?',
+            'Sinh năm 2012, cô bé họa sĩ nhí',
+            'không chỉ có tài năng nghệ thuật bẩm sinh mà còn sở hữu một trái tim nhân ái rộng lớn.',
+            'Ngay từ những nét cọ đầu đời, Cherry đã ấp ủ ước mơ dùng hội họa để lan tỏa yêu thương. Với em, mỗi bức tranh không chỉ là sự pha trộn của sắc màu, mà là',
+            'một thông điệp, một cánh tay chìa ra',
+            'với những số phận kém may mắn hơn mình.',
+            'Hành Trình Yêu Thương',
+            'BST Tranh',
+            'Sắc màu<br/>Hy vọng',
+            'Những tác phẩm được vẽ từ trái tim, mang theo ước mơ về một tương lai tươi sáng hơn cho các em nhỏ.',
+            'Đã Bán',
+            'Đang cập nhật tranh...',
+            'Yêu thương<br/>Vẫn còn tiếp nối',
+            'Khám phá thêm hàng chục tác phẩm khác trong bộ sưu tập đặc biệt của Cherry. Mỗi bức tranh là một tia hy vọng mới.',
+            'Xem Tất Cả Tranh',
+            'Hành Trình',
+            'Chia sẻ yêu thương',
+            'Năm 2024, Quỹ được thành lập, tạo nên sự kết nối giữa nghệ thuật và thiện nguyện. Những bức tranh được lan tỏa đến cộng đồng thông qua việc bán tranh và ứng dụng trên sản phẩm.',
+            'Tác phẩm<br/>đã sáng tác',
+            'Triển lãm<br/>gây quỹ',
+            'Trẻ em<br/>được hỗ trợ',
+            'Ứng dụng',
+            'Sản phẩm<br/>Gây quỹ',
+            'Ủng hộ quỹ',
+            'Xem toàn bộ sản phẩm',
+            'Tin Tức',
+            'Báo Chí &<br/>Sự kiện',
+            'Đọc tiếp',
+            'Xem Tất Cả Tin Tức & Sự Kiện',
+            'Góc Nhìn',
+            'Lời Nhắn Nhủ',
+            'Lịch trình',
+            'Triển lãm 2026',
+            'Kết Nối',
+            'Lan tỏa<br/>Yêu thương',
+            'Mọi sự quan tâm, đóng góp của bạn đều là động lực to lớn giúp Quỹ Cherry mang đến nhiều nụ cười hơn cho trẻ thơ.',
+            'Liên Hệ Hỗ Trợ',
+            'Tác giả',
+            'Tác phẩm',
+            'Cửa hàng',
+            'Liên hệ',
+            'Bản quyền thuộc về K COFFEE & Cherry. Mọi quyền được bảo lưu.',
+            'Mới hơn',
+            'Cũ hơn',
+            'Chưa có bài viết nào.',
+            'Góc Báo Chí',
+            'Tin Tức & Sự Kiện',
+            'Đọc bài chi tiết',
+            'Chuyên mục',
+            'Trở về Tin Tức',
+            'Chia sẻ:',
+            'Không tìm thấy trang',
+            'Trang bạn đang tìm kiếm có thể đã bị xóa, đổi tên hoặc tạm thời không truy cập được.',
+            'Trở về Trang chủ'
+        );
+        foreach(\ as \) {
+            pll_register_string('cherry_theme', \, 'Cherry Theme');
+        }
+    }
+}
+add_action('init', 'cherry_register_strings');
+
+function cherry_e(\) {
+    if (function_exists('pll_e')) {
+        pll_e(\);
+    } else {
+        echo \;
+    }
+}
+function cherry__(\) {
+    if (function_exists('pll__')) {
+        return pll__(\);
+    }
+    return \;
+}
