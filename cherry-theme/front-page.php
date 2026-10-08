@@ -31,7 +31,7 @@
             
             <div class="author-block">
                 <div class="author-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cherry-avatar.jpg" alt="Họa sĩ nhí Cherry">
+                    <img loading="lazy" decoding="async" src="<?php echo get_template_directory_uri(); ?>/assets/images/cherry-avatar.jpg" alt="Họa sĩ nhí Cherry">
                 </div>
                 <div class="author-content">
                     <p class="vibe-text">
@@ -74,7 +74,7 @@
                     if (->have_posts()) :
                         while (->have_posts()) : ->the_post();
                             ++;
-                             = get_the_post_thumbnail_url() ?: '';
+                             = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: '';
                              = get_field('art_meta') ?: 'Đang cập nhật';
                              = get_field('art_price') ?: 'Liên hệ';
                              = get_field('art_sold');
@@ -85,7 +85,7 @@
                             <div class="art-card" <?php echo ; ?>>
                                 <div class="art-card-img-wrap">
                                     <a href="<?php echo esc_url(); ?>" class="glightbox" data-gallery="cherry-gallery">
-                                        <img src="<?php echo esc_url(); ?>" alt="<?php the_title(); ?>">
+                                        <img loading="lazy" decoding="async" src="<?php echo esc_url(); ?>" alt="<?php the_title(); ?>">
                                     </a>
                                     <?php echo ; ?>
                                 </div>
@@ -152,10 +152,10 @@
                 if (->have_posts()) :
                     while (->have_posts()) : ->the_post();
                          = get_field('merch_link') ?: 'https://kcoffee.vn/phu-kien-tui/';
-                         = get_the_post_thumbnail_url() ?: '';
+                         = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: '';
                         ?>
                         <div class="merch-card">
-                            <img src="<?php echo esc_url(); ?>" alt="<?php the_title(); ?>">
+                            <img loading="lazy" decoding="async" src="<?php echo esc_url(); ?>" alt="<?php the_title(); ?>">
                             <div class="merch-overlay">
                                 <h3><?php the_title(); ?></h3>
                                 <a href="<?php echo esc_url(); ?>" target="_blank" class="pill-btn outline">Ủng hộ quỹ</a>
@@ -196,7 +196,7 @@
                         ?>
                         <div class="news-card">
                             <a href="<?php the_permalink(); ?>">
-                                <img src="<?php echo get_the_post_thumbnail_url() ?: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80'; ?>" alt="<?php the_title(); ?>">
+                                <img loading="lazy" decoding="async" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large') ?: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80'; ?>" alt="<?php the_title(); ?>">
                             </a>
                             <div class="news-content">
                                 <span class="news-date"><?php echo get_the_date('d/m/Y'); ?></span>
@@ -229,7 +229,7 @@
                     if (->have_posts()) :
                         while (->have_posts()) : ->the_post();
                              = get_field('testi_role');
-                             = get_the_post_thumbnail_url() ?: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80';
+                             = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80';
                             ?>
                             <div class="testi-item">
                                 <div style="color: var(--c-accent); margin-bottom: 15px;">
@@ -237,7 +237,7 @@
                                 </div>
                                 <div class="testi-quote"><?php the_content(); ?></div>
                                 <div class="testi-author-wrap">
-                                    <span class="avata-testimonials"><img src="<?php echo esc_url(); ?>" alt="<?php the_title(); ?>"></span>
+                                    <span class="avata-testimonials"><img loading="lazy" decoding="async" src="<?php echo esc_url(); ?>" alt="<?php the_title(); ?>"></span>
                                     <div class="testi-author-info">
                                         <p class="testi-author"><?php the_title(); ?></p>
                                         <p class="testi-role"><?php echo esc_html(); ?></p>
@@ -273,13 +273,13 @@
                         ++;
                          = get_field('schedule_time');
                          = get_field('schedule_address');
-                         = get_the_post_thumbnail_url() ?: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80';
+                         = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80';
                          = ( == 1) ? 'schedule-dot-active' : 'schedule-dot-upcoming';
                          = ( == 1) ? 'schedule-date-active' : 'schedule-date-upcoming';
                          = ( == 1) ? '' : 'schedule-venue-upcoming';
                         ?>
                         <div class="news-card">
-                            <img src="<?php echo esc_url(); ?>" alt="<?php the_title(); ?>">
+                            <img loading="lazy" decoding="async" src="<?php echo esc_url(); ?>" alt="<?php the_title(); ?>">
                             <div class="news-content">
                                 <div class="schedule-dot <?php echo ; ?>"></div>
                                 <p class="schedule-date <?php echo ; ?>"><?php echo esc_html(); ?></p>
