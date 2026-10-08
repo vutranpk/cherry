@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -604,25 +604,17 @@
         }
         .news-link { font-size: var(--fs-small); font-weight: var(--fw-medium); color: var(--c-accent); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
         
-        .testimonial-slider {
-            display: flex; gap: var(--sp-md); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-        }
+                .testimonial-slider { display: flex; gap: var(--sp-md); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-behavior: smooth; }
         .testimonial-slider::-webkit-scrollbar { display: none; }
-        .testi-item { 
-            flex: 0 0 calc(50% - var(--sp-md));
-            scroll-snap-align: center;
-            padding: var(--sp-sm);
-            background: var(--c-bg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border: 1px solid var(--c-border);
-            align-items: center;
-        }
-        .testi-quote { font-family: var(--f-sans); font-size: 1rem; line-height: 1.6; margin-bottom: var(--sp-sm); text-align: left; }
-        .testi-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; text-align: left; font-weight: var(--fw-bold); }
-        
-        @media (max-width: 1023px) {
+        .testi-item { flex: 0 0 calc(50% - (var(--sp-md) / 2)); scroll-snap-align: start; padding: var(--sp-lg); background: var(--c-bg); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; border-radius: var(--br-md); box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
+        .testi-quote { font-family: var(--f-sans); font-size: 1.1rem; line-height: 1.6; margin-bottom: var(--sp-md); text-align: left; font-style: italic; color: var(--c-text); }
+        .testi-author-wrap { display: flex; align-items: center; gap: 15px; }
+        .avata-testimonials { width: 56px; height: 56px; overflow: hidden; border-radius: 50%; flex-shrink: 0; }
+        .avata-testimonials img { width: 100%; height: 100%; object-fit: cover; }
+        .testi-author-info { display: flex; flex-direction: column; }
+        .testi-author { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; font-weight: var(--fw-bold); color: var(--c-text); margin: 0; }
+        .testi-role { font-size: 0.85rem; color: var(--c-text-mut); margin: 3px 0 0 0; }
+          @media (max-width: 1023px) {
             .news-card { flex: 0 0 calc(50% - (var(--sp-lg) / 2)); }
         }
         @media (max-width: 767px) {
@@ -1240,36 +1232,72 @@
     </section>
 
     <!-- TESTIMONIAL SECTION -->
-    <section class="section-padding" id="testimonials" style="background: var(--c-bg); position: relative; overflow: hidden;">
-        <div class="container" style="position: relative; z-index: 2;">
-            <p class="tagline" style=" text-align:center;">Góc Nhìn</p>
-            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md); text-align:center;">Lời Nhắn Nhủ</h2>
-            <div class="testimonial-wrapper" style="position: relative;">
-                <div class="testimonial-slider" id="testi-slider">
-                <div class="testi-item">
-                    <p class="testi-quote">"Những bức tranh không chỉ đẹp về mặt nghệ thuật mà còn mang trong mình một tâm hồn vô cùng trong trẻo, hồn nhiên. Mỗi nét vẽ đều chứa đựng tình yêu thương."</p>
-                    <p class="testi-author">- Chuyên gia phê bình nghệ thuật</p>
-                </div>
-                <div class="testi-item">
-                    <p class="testi-quote">"Một dự án ý nghĩa giúp thay đổi cuộc đời của biết bao em nhỏ. Nghệ thuật đích thực là nghệ thuật vị nhân sinh."</p>
-                    <p class="testi-author">- BS. Nguyễn Văn A</p>
-                </div>
-                <div class="testi-item">
-                    <p class="testi-quote">"Cherry đã truyền cảm hứng lớn cho thế hệ trẻ về lòng nhân ái."</p>
-                    <p class="testi-author">- Báo Tuổi Trẻ</p>
-                </div>
-                <div class="testi-item">
-                    <p class="testi-quote">"Những bức tranh không chỉ đẹp về mặt nghệ thuật mà còn mang trong mình một tâm hồn vô cùng trong trẻo, hồn nhiên. Mỗi nét vẽ đều chứa đựng tình yêu thương."</p>
-                    <p class="testi-author">- Chuyên gia phê bình nghệ thuật</p>
-                </div>
-            </div>
-                <div class="testi-nav">
-                    <button id="testi-prev" class="testi-nav-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-                    <button id="testi-next" class="testi-nav-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="section-padding" id="testimonials" style="background: var(--c-bg-alt); position: relative; overflow: hidden;">
+          <div class="container" style="position: relative; z-index: 2;">
+              <p class="tagline" style="text-align:center;">Góc Nhìn</p>
+              <h2 class="vibe-heading" style="margin-bottom: var(--sp-md); text-align:center;">Lời Nhắn Nhủ</h2>
+              <div class="testimonial-wrapper" style="position: relative;">
+                  <div class="testimonial-slider" id="testi-slider">
+                      <div class="testi-item">
+                          <div style="color: var(--c-accent); margin-bottom: 15px;">
+                              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"/></svg>
+                          </div>
+                          <p class="testi-quote">"Những bức tranh không chỉ đẹp về mặt nghệ thuật mà còn mang trong mình một tâm hồn vô cùng trong trẻo, hồn nhiên. Mỗi nét vẽ đều chứa đựng tình yêu thương."</p>
+                          <div class="testi-author-wrap">
+                              <span class="avata-testimonials"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Author"></span>
+                              <div class="testi-author-info">
+                                  <p class="testi-author">Họa sĩ Lê Linh</p>
+                                  <p class="testi-role">Chuyên gia phê bình nghệ thuật</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="testi-item">
+                          <div style="color: var(--c-accent); margin-bottom: 15px;">
+                              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"/></svg>
+                          </div>
+                          <p class="testi-quote">"Một dự án ý nghĩa giúp thay đổi cuộc đời của biết bao em nhỏ. Nghệ thuật đích thực là nghệ thuật vị nhân sinh, và Cherry đã làm được điều phi thường đó."</p>
+                          <div class="testi-author-wrap">
+                              <span class="avata-testimonials"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&q=80" alt="Author"></span>
+                              <div class="testi-author-info">
+                                  <p class="testi-author">BS. Nguyễn Văn An</p>
+                                  <p class="testi-role">Bệnh viện Nhi Đồng</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="testi-item">
+                          <div style="color: var(--c-accent); margin-bottom: 15px;">
+                              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"/></svg>
+                          </div>
+                          <p class="testi-quote">"Cherry đã truyền cảm hứng lớn cho thế hệ trẻ về lòng nhân ái. Những tác phẩm mang đầy màu sắc của em thực sự chạm đến trái tim người xem."</p>
+                          <div class="testi-author-wrap">
+                              <span class="avata-testimonials"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" alt="Author"></span>
+                              <div class="testi-author-info">
+                                  <p class="testi-author">Trần Cẩm Nhung</p>
+                                  <p class="testi-role">Báo Tuổi Trẻ</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="testi-item">
+                          <div style="color: var(--c-accent); margin-bottom: 15px;">
+                              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"/></svg>
+                          </div>
+                          <p class="testi-quote">"Đồng hành cùng Cherry, K COFFEE tự hào khi được lan tỏa những giá trị tốt đẹp đến cộng đồng thông qua dự án đầy nhân văn này."</p>
+                          <div class="testi-author-wrap">
+                              <span class="avata-testimonials"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Author"></span>
+                              <div class="testi-author-info">
+                                  <p class="testi-author">Đại diện K COFFEE</p>
+                                  <p class="testi-role">Đối tác đồng hành</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="testi-nav">
+                      <button id="testi-prev" class="testi-nav-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                      <button id="testi-next" class="testi-nav-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                  </div>
+              </div>
+          </div>
+      </section>
 
     <!-- SCHEDULE SECTION -->
     <section class="section-padding" id="schedule">
