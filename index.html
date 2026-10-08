@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -1446,23 +1446,32 @@
                     position: "bottom" // Thumbnails at the bottom
                 },
                 caption: function (fancybox, slide) {
-                    // Extract caption from data-description to keep HTML intact
+                    // Extract caption dynamically from the art-card-info on the page
+                    const card = slide.triggerEl?.closest('.art-card');
+                    if (card) {
+                        const info = card.querySelector('.art-card-info');
+                        const badge = card.querySelector('.art-card-badge');
+                        if (info) {
+                            const title = info.querySelector('.art-card-title')?.innerText || '';
+                            const meta = info.querySelector('.art-card-meta')?.innerText || '';
+                            const price = info.querySelector('.art-card-price')?.innerText || '';
+                            const badgeHTML = badge ? `<span style="color: #ff4d4d; font-weight: bold;">Đã bán</span>` : "";
+                            return `<div class="meta-title">` + title + `</div><div class="meta-grid"><div>` + meta + `</div><div>` + price + (badgeHTML ? " / " + badgeHTML : "") + `</div></div>`;
+                        }
+                    }
                     return slide.triggerEl?.getAttribute("data-description") || "";
                 },
                 on: {
                     done: (fancybox, slide) => {
-                        // Check if sold
-                        const desc = slide.triggerEl?.getAttribute("data-description") || "";
-                        const isSold = desc.includes('Đã bán') || desc.includes('Da b'); 
+                        // Check if sold via badge presence
+                        const card = slide.triggerEl?.closest('.art-card');
+                        const isSold = card && card.querySelector('.art-card-badge') !== null;
                         
                         if (isSold && slide.$content) {
-                            // Prevent adding multiple stickers
                             if (!slide.$content.querySelector('.fancybox-sold-sticker')) {
                                 const sticker = document.createElement('div');
                                 sticker.className = 'fancybox-sold-sticker';
                                 sticker.innerHTML = 'SOLD';
-                                
-                                // Find the actual image wrapper inside Fancybox
                                 const imgContainer = slide.$content; 
                                 imgContainer.style.position = 'relative';
                                 imgContainer.appendChild(sticker);
@@ -1833,6 +1842,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
