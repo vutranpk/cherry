@@ -232,3 +232,21 @@ function cherry_acf_add_local_field_groups() {
     ));
 }
 ?>
+
+
+// ==========================================
+// CHẾ ĐỘ BẢO TRÌ (MAINTENANCE MODE)
+// ==========================================
+// Đổi giá trị false thành true để bật trang bảo trì cho khách vãng lai.
+// Quản trị viên (đã đăng nhập) vẫn sẽ xem được website bình thường để test.
+ = false; 
+
+if () {
+    add_action('template_redirect', 'cherry_enable_maintenance_mode');
+}
+function cherry_enable_maintenance_mode() {
+    if (!current_user_can('edit_themes') || !is_user_logged_in()) {
+        require_once get_template_directory() . '/maintenance.php';
+        die();
+    }
+}
