@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>Cherry | K COFFEE Art Exhibition (Vibe Edition)</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    
+    <!-- Early theme initialization to prevent FOUC -->
+    <!-- <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script> -->
+    
+    <style>
+        :root {
+            --c-bg: #F4F7F6;
+            --c-bg-alt: #E3EDE9;
+            --c-text: #102A20;     
+            --c-text-mut: #5B7065; 
+            --c-border: rgba(1, 129, 99, 0.15); 
+            --c-accent: rgba(1, 129, 99, 1);   
+            --c-watermark: rgba(1, 129, 99, 0.03);
+            --c-glass-bg: rgba(255, 255, 255, 0.6);
+            --c-glass-border: rgba(1, 129, 99, 0.1);
+            --c-text-hero: #FFFFFF;   
+            --c-bg-hero: rgba(1, 129, 99, 1);
+            
+            /* TYPOGRAPHY TOKENS */
+            --f-sans: 'Barlow', sans-serif;
+            --f-serif: 'Playfair Display', serif;
+            --f-script: 'Hesmony', cursive;
+            
+            --fs-h1: clamp(3.6rem, 5vw, 4.6rem);
+            --fs-h2: clamp(2.8rem, 4.8vw, 4rem);
+            --fs-h3: clamp(1rem, 2.5vw, 1.6rem);
+            --fs-num:  clamp(2rem, 3vw, 3rem);
+            --fs-body: 0.9rem;
+            --fs-small: 0.75rem;
+            
+            --fw-light: 300;
+            --fw-regular: 400;
+            --fw-medium: 500;
+            --fw-bold: 700;
+
+            /* SPACING TOKENS (Expanded for Airiness) */
+            --sp-xs: 15px;
+            --sp-sm: 30px;
+            --sp-md: 50px;
+            --sp-lg: 80px;
+            --sp-xl: 120px;
+            --sp-xxl: 180px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { /* scroll-behavior removed for Lenis inertia */ }
+        html, body { max-width: 100%; }
+
+        body {
+            font-family: var(--f-sans);
+            background-color: var(--c-bg);
+            color: var(--c-text);
+            line-height: 1.8;
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+            position: relative;
+        }
+        body.menu-open { touch-action: none; }
+        a { text-decoration: none; color: inherit; }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--sp-lg);
+        }
+
+        .brand-kcoffee {
+            text-transform: uppercase !important;
+            white-space: nowrap !important;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            font-weight: var(--fw-bold);
+        }
+
+        .section-padding, .hero, #project-info, #author, #history, #schedule, #merch, #contact {
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1, h2, h3 { font-weight: var(--fw-medium); line-height: 1.1; text-transform: capitalize; }
+        .vibe-heading { font-family: var(--f-serif); }
+        .font-signature { font-family: var(--f-script); }
+        h1.vibe-heading {
+            font-size: var(--fs-h1);
+            line-height: 1.2;
+            
+        }
+        h2.vibe-heading {
+            font-size: var(--fs-h2);
+            margin-bottom: var(--sp-xs);
+            line-height: 1.1;
+        }
+        .vibe-heading .light {
+            font-weight: var(--fw-light);
+            color: var(--c-text-mut);
+        }
+        .vibe-text {
+            font-size: var(--fs-body);
+            color: var(--c-text-mut);
+            max-width: 600px;
+            margin-bottom: var(--sp-xs);
+        }
+        section { scroll-margin-top: 0; position: relative; }
+        .section-padding { padding-top: max(var(--sp-xl), 80px); padding-bottom: var(--sp-xl); }
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            font-size: 28vw;
+            font-family: var(--f-sans);
+            font-weight: 300;
+            color: var(--c-accent);
+            opacity: 0.03;
+            z-index: 0;
+            pointer-events: none;
+            letter-spacing: -5px;
+            overflow: hidden;
+        }
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            background: var(--c-bg);
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 4fr 7fr;
+            align-items: center;
+            gap: 5vw;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            justify-content: space-between;
+        }
+        .hero-content { 
+            text-align: left; 
+            z-index: 2; 
+        }
+        .hero-title {
+            font-size: clamp(3.5rem, 6vw, 7rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--c-text);
+            margin: 20px 0;
+        }
+        .hero-desc { margin-bottom: var(--sp-sm); font-size: var(--fs-h3); color: var(--c-text-mut); }
+        .tagline {
+            font-size: var(--fs-small);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--c-text);
+        }
+        
+        .pill-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px var(--sp-md);
+            background: transparent;
+            border: 1px solid var(--c-text);
+            color: var(--c-text);
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: var(--fw-medium);
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .pill-btn:hover { background: var(--c-text); color: var(--c-bg); }
+        
+        .hero-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            max-height: 800px;
+            margin: 0;
+            border-radius: 4px;
+        }
+        .hero-img-wrap img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 4px;
+        }
+        .circle-btn {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--c-accent);
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-family: var(--f-sans);
+            font-weight: var(--fw-medium);
+            letter-spacing: 1px;
+            transition: transform 0.4s ease, background 0.4s ease;
+            text-align: center;
+            line-height: 1.5;
+            position: absolute;
+            bottom: 10%;
+            left: -70px;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .circle-btn:hover { transform: scale(1.05); background: var(--c-text); color: #fff; }
+
+        .header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 25px var(--sp-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: padding 0.4s ease;
+        }
+        .header::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; width: 100%; height: 120px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .header.scrolled { padding:  var(--sp-xs) var(--sp-sm); }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .nav-links { display: flex; gap: var(--sp-sm); }
+        .nav-links a {
+            font-size: var(--fs-small);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: var(--fw-medium);
+            color: var(--c-text);
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--c-text); }
+        .header-actions { display: none; }
+        .hamburger { display: none; }
+
+        #project-info { padding: 0; background: var(--c-bg-alt); }
+        .project-metrics { display: flex; }
+        .metric-item { flex: 1; padding: var(--sp-lg) var(--sp-sm); border-right: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); display: flex; flex-direction: column; transition: background 0.4s ease; }
+        .metric-item:last-child { border-right: none; }
+        .metric-item:hover { background: rgba(255,255,255,0.03); }
+        .metric-item-featured { background: var(--c-bg-hero); color: var(--c-bg); justify-content: space-between; }
+        .metric-item-featured:hover { background: var(--c-text); }
+        .metric-item-featured .metric-desc { color: var(--c-bg); font-weight: 600; }
+        .metric-item-featured .vibe-heading { color: var(--c-bg); }
+        .metric-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--c-text-mut); margin-bottom: var(--sp-lg); }
+        .metric-value { font-size: clamp(3rem, 5vw, 4.5rem); font-family: var(--f-sans); line-height: 1; margin: auto 0 10px; font-weight: 300; letter-spacing: -2px; }
+        .metric-desc { font-size: 1rem; color: var(--c-text); text-transform: uppercase; letter-spacing: 1px; }
+
+        .author-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; background: var(--c-bg); }
+        .author-content-wrap { padding: var(--sp-xl) var(--sp-xl); display: flex; flex-direction: column; justify-content: center; padding-left: calc(max(var(--sp-lg), (100vw - 1400px) / 2)); }
+        .author-img-wrap { height: 100vh; width: 100%; overflow: hidden; }
+        .author-img-full { width: 100%; height: 100%; object-fit: cover; transition: filter 0.5s ease, transform 0.8s ease; }
+        .author-img-wrap:hover .author-img-full {transform: scale(1.05); }
+        @media (max-width: 1023px) {
+            .author-split { grid-template-columns: 1fr; min-height: auto; }
+            .author-content-wrap { padding: var(--sp-xl) var(--sp-lg); }
+            .author-img-wrap { height: 50vh; order: -1; }
+        }
+
+        .sticky-container { height: 450vh; position: relative;}
+        .sticky-wrapper {
+            position: -webkit-sticky;
+            position: sticky;
+            padding-top: max(var(--sp-xl), 80px);
+            top: 0;
+            height: 100dvh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: var(--c-bg);
+        }
+        .horizontal-track {
+            display: flex;
+            width: max-content;
+            padding: 0 var(--sp-lg);
+            gap: 5vw;
+            will-change: transform;
+        }
+        .gallery-intro { flex: 0 0 30vw; display: flex; flex-direction: column; justify-content: flex-start; }
+        .gallery-ending { flex: 0 0 40vw; display: flex; flex-direction: column; justify-content: flex-start; }
+        .gallery-ending-title { font-size: var(--fs-h2);font-family: var(--f-script); line-height: 1; margin-bottom: var(--sp-md); white-space: nowrap; }
+
+        .art-card { height: 60vh; position: relative; display: flex; flex-direction: column; justify-content: flex-start; gap: 20px; flex: none; }
+        .art-card a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            max-height: calc(80vh - 60px);
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+            
+        }
+        .art-card-title {
+            text-align: center;
+            font-family: var(--f-sans);
+            font-size:var(--fs-small);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--c-text);
+            font-weight: var(--fw-bold);
+        }
+        .art-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .art-card:hover img { transform: scale(1.05); }
+
+        .fancybox__caption { background: var(--c-bg) !important; color: var(--c-text) !important; }
+        .glightbox-clean .gdesc-inner { padding: var(--sp-lg) !important; }
+        .meta-title { font-size: 1.4rem !important; margin-bottom: var(--sp-xs) !important; font-family: var(--f-sans) !important; text-transform: uppercase; line-height: 1.1; letter-spacing: 1px; font-weight: var(--fw-bold); }
+        .meta-desc { font-size: var(--fs-body) !important; color: var(--c-text-mut) !important; }
+
+        #history { overflow: hidden; background: var(--c-bg-alt); position: relative; z-index: 10; margin-top: 0; }
+        .impact-container {text-align: center; display: flex; flex-direction: column; justify-content: center;}
+        .impact-desc{margin: 0 auto;}
+        .impact-stats-wrap {max-width: 800px; margin: var(--sp-md) auto; display: flex; justify-content: space-between; gap: var(--sp-md);}
+        .impact-stat-item {text-align: center;}
+        .impact-number { font-size: clamp(3.5rem, 6vw, 5rem); font-family: var(--f-sans); font-weight: 300; color: var(--c-accent); line-height: 1; margin-bottom: 15px; letter-spacing: -2px; }
+        .impact-label { font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 1px; color: var(--c-text-mut); }
+        .impact-sub { font-size: 0.85rem; color: var(--c-text-mut); margin-top: 5px; }
+        
+        .impact-quote-text {
+            font-family: var(--f-serif);
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--c-text);
+            text-align: center;
+            line-height: 1.3;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: var(--sp-sm) auto;
+        }
+
+        #merch, #contact { min-height: 100vh; display: flex; align-items: center; width: 100%; }
+        #schedule .container, #merch .container, #contact .container { width: 100%; }
+        #schedule .container { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .schedule-timeline { border-left: none; padding-left: 0; position: relative; margin-top: var(--sp-sm); text-align: center; max-width: 600px; width: 100%; }
+        .schedule-item { position: relative; margin-bottom: var(--sp-sm);; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+        .schedule-item:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+        .schedule-dot { display: none; }
+        .schedule-date { font-size: var(--fs-small); color: var(--c-text-mut); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .schedule-venue { font-size: var(--fs-h3); font-weight: var(--fw-medium); margin-bottom: var(--sp-xs); text-transform: uppercase; }
+        .schedule-details { font-size: var(--fs-body); color: var(--c-text-mut); max-width: 500px; }
+
+        #merch { background: var(--c-bg-alt); }
+        .merch-grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--sp-xl); align-items: center; }
+        .merch-stage { position: relative; height: 500px; overflow: hidden; }
+        .merch-img { position: absolute; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; }
+        .merch-img-front { width: 60%; top: 0; left: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 2; }
+        .merch-img-front:hover { transform: scale(1.03); z-index: 4; }
+        .merch-img-back { width: 50%; top: 120px; right: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); opacity: 0.75; z-index: 1; transform-origin: right center; }
+        .merch-img-back:hover { opacity: 1; transform: scale(1.04) translateY(-4px); z-index: 3; }
+
+        #contact { background: var(--c-bg); overflow: hidden; }
+        .contact-grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--sp-xl); align-items: start; }
+        .contact-desc { margin-bottom: var(--sp-md); }
+        .contact-info-list { font-size: 14px; color: var(--c-text-mut); line-height: 2; }
+        .contact-info-list p i { margin-right: 10px; }
+        .contact-form { display: flex; flex-direction: column; gap: var(--sp-sm); }
+        .contact-inputs-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-md); }
+        .contact-field {
+            width: 100%;
+            padding: 15px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--c-border);
+            color: var(--c-text);
+            font-family: var(--f-sans);
+            font-size: var(--fs-body);
+            outline: none;
+            transition: border-bottom-color 0.3s ease;
+        }
+        .contact-field:focus { border-bottom-color: var(--c-accent); }
+        .contact-field-textarea { resize: vertical; }
+        .contact-submit-wrap { text-align: right;}
+        .contact-submit-btn {
+            font-size: 14px;
+            padding: var(--sp-xs) var(--sp-md);
+            background: var(--c-text);
+            color: var(--c-bg);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .contact-submit-btn:hover { background: var(--c-accent); color: #fff; }
+
+        .footer { padding: var(--sp-md) 0; text-align: center; border-top: 1px solid var(--c-border); color: var(--c-text-mut); font-size: 13px; }
+
+        /* Tier 1: Mobile & Tablet Breakpoint (<= 1023px) */
+        @media (max-width: 1023px) {
+            :root {
+                --sp-xxl: 60px;
+                --sp-xl: 50px;
+                --sp-lg: 30px;
+                --fs-h1: clamp(2.5rem, 8vw, 3.5rem);
+                --fs-h2: clamp(2rem, 7vw, 3rem);
+                --fs-h3: clamp(1rem, 2vw, 1.4rem);
+            }
+            .container { padding: 0 var(--sp-md); }
+            .mobile-view-all { display: inline-block !important; }
+            
+            /* Header & Nav */
+            .header { padding: 15px var(--sp-sm); }
+            .header.scrolled { padding: 12px var(--sp-md); }
+            .logo img { max-height: 40px; }
+            .header-actions { display: block; }
+            .hamburger { display: block !important; width: 30px; height: 20px; position: relative; z-index: 1001; background: none; border: none; cursor: pointer; }
+            .hamburger span { display: block; height: 1.5px; background: var(--c-text); position: absolute; transition: all 0.3s ease-in-out; transform-origin: center; }
+            .hamburger span:nth-child(1) { width: 100%; top: 0; left: 0; }
+            .hamburger span:nth-child(2) { width: 100%; top: 9px; left: 0; }
+            .hamburger span:nth-child(3) { width: 70%; top: 18px; right: 0; left: auto; }
+            .hamburger.active span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { top: 9px; width: 100%; transform: rotate(-45deg); left: 0; right: auto; }
+            
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; width: 100%; height: 100dvh; background: var(--c-bg); 
+                flex-direction: column; align-items: center; justify-content: center; gap: 20px; 
+                transition: right 0.3s ease; z-index: 999; overflow-y: auto; padding: var(--sp-lg);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.2rem; font-weight: 600; }
+            
+            /* Hero */
+            .hero { padding-top: 100px !important; }
+            .hero-inner { grid-template-columns: 1fr !important; gap: 30px !important; }
+            .hero-content { text-align: left; max-width: 100%; padding-right: 0; }
+            .hero-img-wrap { height: 60vh !important; max-height: 600px; margin-top: 20px; width: 100%; border-radius: 4px; }
+            .circle-btn { width: 120px; height: 120px; font-size: 10px; bottom: -40px; left: auto; right: 20px; }
+            
+            /* General Layouts */
+            .project-metrics { display: grid; grid-template-columns: 1fr 1fr; flex-wrap: wrap; }
+            .metric-item { flex: none; border-right: 1px solid var(--c-border) !important; padding: var(--sp-lg) var(--sp-md); justify-content: center; text-align: center; }
+            .metric-item:nth-child(2n) { border-right: none !important; }
+            .metric-item:nth-child(3), .metric-item:nth-child(4) { border-bottom: none; }
+            .impact-stats-wrap { flex-direction: column !important; gap: var(--sp-md); }
+            
+            /* Gallery */
+            .horizontal-track { padding: 0 var(--sp-sm) !important; gap: var(--sp-sm) !important; }
+            .horizontal-track .art-card { flex: 0 0 85vw !important; height: auto !important; }
+            .gallery-intro { flex: 0 0 65vw !important; }
+            .gallery-ending { flex: 0 0 100vw !important; padding-right: var(--sp-sm) !important; }
+            .gallery-ending-title { font-size: 2.2rem !important; white-space: normal !important; }
+            
+            /* Merch & Contact */
+            .contact-grid { grid-template-columns: 1fr !important; gap: var(--sp-lg); }
+            .contact-inputs-row { grid-template-columns: 1fr !important; gap: var(--sp-sm); }
+        }
+        
+        /* Tier 2: Mobile Only Adjustments (<= 767px) */
+        @media (max-width: 767px) {
+            :root { 
+                --sp-xxl: 50px; 
+                --sp-xl: 40px; 
+                --sp-lg: 20px; 
+                --fs-h2: clamp(2rem, 9vw, 2.5rem);
+            }
+            .container { padding: 0 var(--sp-sm); }
+            
+            /* First View Fixes */
+            .watermark { top: 20%; font-size: 35vw; letter-spacing: -2px; }
+            .hero { padding-top: 80px !important; display: flex; flex-direction: column; justify-content: center; }
+            .hero-inner { gap: 15px !important; }
+            .hero-content { margin-bottom: 0; }
+            .hero-title { font-size: clamp(2.5rem, 12vw, 3.8rem); line-height: 1.1; margin: 5px 0 15px 0; }
+            .hero-desc { font-size: 0.95rem; line-height: 1.4; margin-bottom: 10px; }
+            .hero-img-wrap { height: 40vh !important; min-height: 250px; max-height: 350px; margin-top: 0; aspect-ratio: auto; }
+            .circle-btn { width: 90px; height: 90px; font-size: 8px; bottom: -25px; right: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+            
+            .metric-value { font-size: 2rem; }
+            .metric-item { padding: var(--sp-md) var(--sp-xs); }
+            .merch-grid { grid-template-columns: 1fr !important; }
+            
+            .pill-btn { width: 100%; text-align: center; justify-content: center; }
+            .footer-bottom { flex-direction: column; justify-content: center; text-align: center; gap: 5px !important; }
+            .footer-bottom p { text-align: center !important; }
+        }
+    
+                /* NEW SECTIONS CSS */
+        .news-slider {
+            display: flex;
+            gap: var(--sp-lg);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: var(--sp-md);
+            -ms-overflow-style: none; /* IE/Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .news-slider::-webkit-scrollbar { display: none; }
+        .news-card {
+            flex: 0 0 calc(33.333% - (var(--sp-lg) * 2 / 3));
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-sm);
+        }
+        .news-card img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+        .news-date { font-size: var(--fs-small); color: var(--c-text-mut); text-transform: uppercase; letter-spacing: 1px; }
+        .news-title { 
+            font-size: var(--fs-body); 
+            line-height: 1.4; 
+            margin-bottom: 10px; 
+            font-weight: 500; 
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .news-link { font-size: var(--fs-small); font-weight: 600; color: var(--c-accent); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+        
+        .testimonial-slider {
+            display: flex; gap: var(--sp-md); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+        }
+        .testimonial-slider::-webkit-scrollbar { display: none; }
+        .testi-item { 
+            flex: 0 0 calc(40% - var(--sp-md));
+            scroll-snap-align: center;
+            padding: var(--sp-sm);
+            background: var(--c-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+    border: 1px solid var(--c-border);
+        }
+        .testi-quote { font-family: var(--f-sans); font-size: 1rem; line-height: 1.6; margin-bottom: var(--sp-sm); text-align: left; }
+        .testi-author { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; text-align: left; font-weight: bold; }
+        
+        @media (max-width: 1023px) {
+            .news-card { flex: 0 0 calc(50% - (var(--sp-lg) / 2)); }
+        }
+        @media (max-width: 767px) {
+            .testi-item { flex: 0 0 84vw; }
+        }
+        @media (max-width: 767px) {
+            .news-card { flex: 0 0 50vw; }
+        }
+                .testi-nav { display: flex; justify-content: center; gap: 15px; margin-top: var(--sp-md); }
+        .testi-nav-btn { background: var(--c-text); color: var(--c-bg); border: none; width: 40px; height: 40px; cursor: pointer; transition: opacity 0.3s ease; }
+        .testi-nav-btn:hover { opacity: 0.8; }
+        .testi-nav-btn i { font-size: 1rem; }
+        /* FANCYBOX CUSTOMIZATION */
+        .fancybox__container {
+            --fancybox-bg: var(--c-bg);
+            --fancybox-color: var(--c-text);
+            --f-button-bg: transparent;
+            --f-button-hover-bg: rgba(0, 0, 0, 0.05);
+            --f-button-color: var(--c-text);
+            --f-button-svg-filter: none;
+        }
+        .fancybox__toolbar, .f-toolbar {
+            background: transparent !important;
+            color: var(--c-text) !important;
+            text-shadow: none !important;
+        }
+        .f-button, .fancybox__button {
+            background: transparent !important;
+            color: var(--c-text) !important;
+        }
+        .f-button:hover, .fancybox__button:hover {
+            background: rgba(0, 0, 0, 0.05) !important;
+        }
+        .f-button svg, .fancybox__button svg {
+            filter: none !important;
+            color: var(--c-text) !important;
+        }
+        .fancybox__nav .carousel__button {
+            color: var(--c-text);
+            background: transparent !important;
+        }
+        .fancybox__caption {
+            background: var(--c-bg);
+            color: var(--c-text);
+            padding: var(--sp-lg);
+            text-align: left;
+            width: 100%;
+            border-left: 1px solid var(--c-border);
+            /* Layout 2 columns */
+        }
+        
+        /* 2-Column Desktop Layout for Fancybox */
+        @media (min-width: 1024px) {
+            .fancybox__slide {
+                display: flex;
+                flex-direction: row;
+                padding: 48px;
+            }
+            .fancybox__content {
+                flex: 7;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .fancybox__caption {
+                position: static;
+                flex: 3;
+                width: auto;
+                height: 100%;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border-left: 1px solid #ddd;
+                padding-left: var(--sp-xl);
+                box-shadow: none;
+                transform: none;
+            }
+        }
+        .fancybox__slide::before, .fancybox__slide::after {
+            display: none;
+        }
+        @media (max-width: 767px) {
+            .fancybox__slide { padding: 48px 0 0 0 !important; }
+            .fancybox__caption {
+                padding: 15px !important;
+                border-left: none;
+            }
+            .meta-title { font-size: 1.3rem !important; margin-bottom: 10px !important; text-align: center; }
+            .meta-grid { margin-top: 10px; gap: 4px; text-align: center; }
+            .meta-grid div { font-size: 0.9rem; line-height: 1.3; }
+            .meta-grid div strong { font-size: 0.75rem; margin-bottom: 1px; }
+            .fancybox__content { border-radius: 0 !important; }
+        }
+          /* Sold Sticker */
+        .fancybox-sold-sticker {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: #d32f2f;
+            color: #fff;
+            font-family: var(--f-sans);
+            font-weight: 900;
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            transform: rotate(-10deg);
+            border: 3px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 9999;
+        }
+        @media (max-width: 767px) {
+            .fancybox-sold-sticker {
+                bottom: 10px;
+                right: 10px;
+                font-size: 1.2rem;
+                padding: 5px 15px;
+            }
+        }
+        /* MERCH SLIDER CSS */
+        .merch-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            border: none;
+            width: 45px;
+            height: 45px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 10;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--c-text);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .merch-nav:hover { background: var(--c-accent); color: #fff; }
+        .merch-prev { left: -22px; }
+        .merch-next { right: -22px; }
+        .merch-product-grid::-webkit-scrollbar { display: none; }
+        .merch-product-grid { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @media (max-width: 767px) {
+            .merch-nav { display: none; } /* Hide buttons on mobile, rely on swipe */
+        }
+        .merch-product-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .merch-card {
+            flex: 0 0 50%;
+            scroll-snap-align: center;
+            background: #fff;
+            
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .merch-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .merch-card-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .merch-card-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .merch-card-info p {
+            color: var(--c-accent);
+            font-weight: bold;
+        }
+        @media (min-width: 768px) { .merch-card { flex: 0 0 calc(33.333% - 14px); } }
+        /* END NEW SECTIONS CSS */
+        /* RESTORED MISSING CSS */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            
+            background: var(--c-text);
+            color: var(--c-bg);
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .theme-toggle:hover { transform: scale(1.1); }
+
+        .meta-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 16px;
+            font-family: var(--f-sans) !important;
+        }
+        .meta-grid div {
+            display: block;
+            border-bottom: none;
+            padding-bottom: 0;
+            line-height: 1.4;
+            font-size: 1rem;
+        }
+        .meta-grid div strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--c-text-mut);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+        
+        .gallery-intro { align-items: flex-start; }
+        .gallery-ending { align-items: flex-start; }
+        .gallery-intro-sub { margin-bottom: var(--sp-md); }
+        .gallery-ending-desc { margin-bottom: var(--sp-md); }
+        .gotop-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--c-text);
+            color: var(--c-bg);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .gotop-btn.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .gotop-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: var(--c-accent);
+            color: #fff;
+        }
+        @media (max-width: 767px) {
+            .gotop-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1rem; }
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'Hesmony';
+            src: url('fonts/1FTV-VIP-Hesmony.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="logo.png" alt="K COFFEE Logo">
+        </a>
+        <nav class="nav-links" id="nav-links">
+            <a href="#author">Tác giả</a>
+            <a href="#gallery">Tác phẩm</a>
+            <a href="#history">Hành trình</a>
+            <a href="#schedule">Lịch trình</a>
+            <a href="#merch">Cửa hàng</a>
+            <a href="#contact">Liên hệ</a>
+        </nav>
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Menu điều hướng" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="watermark">CHERRY</div>
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <p class="tagline"><span class="brand-kcoffee">K&nbsp;COFFEE</span> x Cherry</p>
+                <h1 class="vibe-heading hero-title">
+                    Chia sẻ<br>yêu thương
+                </h1>
+                <p class="vibe-text hero-desc">
+                    Triển lãm nghệ thuật đánh dấu hành trình thiện nguyện đầy cảm hứng của cô họa sĩ nhí 13 tuổi.
+                </p>
+            </div>
+            <div class="hero-img-wrap">
+                <img id="hero-random-img" src="bannerhero.jpg" alt="Cherry Artwork">
+                <a href="#gallery" class="circle-btn">Khám phá<br>Gallery<br><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="margin-top: 5px;"><line x1="5" y1="5" x2="19" y2="19"></line><polyline points="10 19 19 19 19 10"></polyline></svg></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT INFO SECTION -->
+    <section id="project-info">
+        <div class="project-metrics">
+            <div class="metric-item metric-item-featured">
+                <h3 class="vibe-heading" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px;">Chia sẻ<br>Yêu thương</span></h3>
+                <p class="metric-desc"><span class="brand-kcoffee">K&nbsp;COFFEE</span> &times; CHERRY</p>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Đóng góp</span>
+                <h3 class="metric-value">80%</h3>
+                <p class="metric-desc">Doanh thu bán tranh</p>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Quy mô</span>
+                <h3 class="metric-value">80+</h3>
+                <p class="metric-desc">Tác phẩm nghệ thuật</p>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Mục tiêu</span>
+                <h3 class="metric-value" style="font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1.1; margin-top: auto; padding-top: 15px; font-weight: 300;">BV. Nhi Đồng<br>1 & 2</h3>
+                <p class="metric-desc">Hỗ trợ bệnh nhi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTHOR SECTION -->
+    <section id="author">
+        <div class="author-split">
+            <div class="author-content-wrap">
+                <p class="tagline">Tác giả</p>
+                <h2 class="vibe-heading  hero-title">Cherry</h2>
+                <p class="vibe-text" style="color: var(--c-text);">
+                    <i>HÀNH TRÌNH CHIA SẺ YÊU THƯƠNG</i>
+                </p>
+                <p class="vibe-text" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                    Cherry, cô bé 11 tuổi đến từ TP.HCM, được biết đến như một “họa sĩ nhí” với khả năng sáng tạo và tình yêu đặc biệt dành cho hội họa.
+                </p>
+                <p class="vibe-text" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                    Cherry bắt đầu cầm cọ từ năm 3 tuổi. Từ những nét vẽ đầu tiên, hội họa dần trở thành một phần tự nhiên trong cuộc sống của em. Đến nay, Cherry đã sáng tác khoảng 130 bức tranh, mang phong cách giàu màu sắc, tự do và phóng khoáng.
+                </p>
+            </div>
+            <div class="author-img-wrap">
+                <img src="cherry.jpg" alt="Họa sĩ Cherry" class="author-img-full">
+            </div>
+        </div>
+    </section>
+
+    <!-- VIBE GALLERY SECTION (HORIZONTAL SCROLL) -->
+    <section id="gallery" class="sticky-container">
+        <div class="sticky-wrapper">
+            <div class="horizontal-track">
+                  
+                  <!-- Intro Title -->
+                  <div class="gallery-intro">
+                      <p class="tagline">Trạm dừng cảm xúc</p>
+                      <h2 class="vibe-heading">Góc Nhỏ <br/>Của Cherry</h2>
+                      <p class="vibe-text">Khám phá không gian trưng bày độc quyền, nơi nghệ thuật hòa quyện cùng sẻ chia. Vuốt ngang để tham quan phòng tranh và cùng chúng tôi thắp lên hy vọng cho các em nhỏ.</p>
+                      <a href="#" class="pill-btn btn-open-gallery mobile-view-all" style="margin-top: 20px;">Xem Tất Cả Tranh</a>
+                  </div>
+  
+                  <!-- Card 1 -->
+                  <div class="art-card">
+                      <a href="BST TRANH/10.png" class="glightbox" data-gallery="cherry-gallery" data-description="<div class='meta-title'>Hoàng Hôn Trên Phố</div><div class='meta-grid'><div>80x80cm - Acrylic on Canvas (2024)</div><div>12.000.000 VNĐ / <span style='color: #ff4d4d; font-weight: bold;'>Đã bán</span></div></div>">
+                          <img src="BST TRANH/10.png" alt="Hoàng Hôn Trên Phố">
+                      </a>
+                      <h3 class="art-card-title">Hoàng Hôn Trên Phố</h3>
+                  </div>
+  
+                  <!-- Card 2 -->
+                  <div class="art-card">
+                      <a href="BST TRANH/13.png" class="glightbox" data-gallery="cherry-gallery" data-description="<div class='meta-title'>Giấc Mơ Tuổi Thơ</div><div class='meta-grid'><div>60x60cm - Sơn mài (2023)</div><div>15.000.000 VNĐ</div></div>">
+                          <img src="BST TRANH/13.png" alt="Giấc Mơ Tuổi Thơ">
+                      </a>
+                      <h3 class="art-card-title">Giấc Mơ Tuổi Thơ</h3>
+                  </div>
+  
+                  <!-- Card 3 -->
+                  <div class="art-card">
+                      <a href="BST TRANH/14.png" class="glightbox" data-gallery="cherry-gallery" data-description="<div class='meta-title'>Khu Rừng Kỳ Lạ</div><div class='meta-grid'><div>100x100cm - Màu nước (2024)</div><div>8.000.000 VNĐ / <span style='color: #ff4d4d; font-weight: bold;'>Đã bán</span></div></div>">
+                          <img src="BST TRANH/14.png" alt="Khu Rừng Kỳ Lạ">
+                      </a>
+                      <h3 class="art-card-title">Khu Rừng Kỳ Lạ</h3>
+                  </div>
+                  
+                  <!-- Card 4 -->
+                  <div class="art-card art-card-rotate">
+                      <a href="BST TRANH/15.png" class="glightbox" data-gallery="cherry-gallery" data-description="<div class='meta-title'>Chuyến Đi</div><div class='meta-grid'><div>50x70cm - Acrylic (2022)</div><div>10.000.000 VNĐ</div></div>">
+                          <img src="BST TRANH/15.png" alt="Chuyến Đi">
+                      </a>
+                      <h3 class="art-card-title">Chuyến Đi</h3>
+                  </div>
+  
+                  <!-- Card 5 -->
+                  <div class="art-card art-card-sepia">
+                      <a href="BST TRANH/16.png" class="glightbox" data-gallery="cherry-gallery" data-description="<div class='meta-title'>Góc Nhỏ</div><div class='meta-grid'><div>40x40cm - Chì than (2024)</div><div>5.000.000 VNĐ / <span style='color: #ff4d4d; font-weight: bold;'>Đã bán</span></div></div>">
+                          <img src="BST TRANH/16.png" alt="Góc Nhỏ">
+                      </a>
+                      <h3 class="art-card-title">Góc Nhỏ</h3>
+                  </div>
+              </div>
+          </div>
+      </section>
+        <!-- IMPACT / HISTORY SECTION -->
+    <section class="section-padding" id="history">
+        <div class="container impact-container">
+            <p class="tagline">Hành Trình</p>
+            <h2 class="vibe-heading impact-heading">Chia sẻ yêu thương
+            </h2>
+            <p class="vibe-text impact-desc">
+                Năm 2024, Quỹ được thành lập, tạo nên sự kết nối giữa nghệ thuật và thiện nguyện. Những bức tranh được lan tỏa đến cộng đồng thông qua việc bán tranh và ứng dụng trên sản phẩm.
+            </p>
+            
+            <div class="impact-stats-wrap">
+                <div class="impact-stat-item">
+                    <div class="impact-number">51</div>
+                    <div class="impact-label">Bức tranh đã bán</div>
+                    <div class="impact-sub">(2024 - 2025)</div>
+                </div>
+                <div class="impact-stat-item">
+                    <div class="impact-number">400<span class="impact-unit">tr</span> +</div>
+                    <div class="impact-label">VNĐ Doanh thu</div>
+                    <div class="impact-sub">(Đóng góp 100%)</div>
+                </div>
+                <div class="impact-stat-item">
+                    <div class="impact-number impact-number-accent">53</div>
+                    <div class="impact-label">Ca phẫu thuật</div>
+                    <div class="impact-sub">(Được hỗ trợ chi phí)</div>
+                </div>
+            </div>
+            <div class="impact-quote-wrap">
+                <p class="impact-quote-text">
+                    Và hành trình ấy vẫn<br/>đang tiếp tục...
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS SLIDER SECTION -->
+    <section class="section-padding" id="news" style="background: var(--c-bg); position: relative; overflow: hidden;">
+        <div class="watermark" style="top: 20%; right: -5%; left: auto; transform: none; text-align: right; letter-spacing: -2px;">NEWS</div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <p class="tagline">Báo Chí & Tin Tức</p>
+            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md);">Lan Tỏa Hành Trình</h2>
+            <div class="news-slider">
+                <div class="news-card">
+                    <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_detMeo-1024x1024.jpg" alt="News 1">
+                    <div class="news-content">
+                        <span class="news-date">10/10/2026</span>
+                        <h3 class="news-title">Triển lãm "Vũ Trụ Sắc Màu" gây quỹ thành công 400 triệu đồng</h3>
+                        <a href="#" class="news-link">Đọc tiếp <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: -4px; margin-left: 5px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_det_Laudainam-1024x1024.jpg" alt="News 2">
+                    <div class="news-content">
+                        <span class="news-date">05/10/2026</span>
+                        <h3 class="news-title">Họa sĩ nhí Cherry: Vẽ tranh bằng tâm hồn trong trẻo</h3>
+                        <a href="#" class="news-link">Đọc tiếp <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: -4px; margin-left: 5px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_detDonutjpg-1024x1024.jpg" alt="News 3">
+                    <div class="news-content">
+                        <span class="news-date">01/10/2026</span>
+                        <h3 class="news-title">Sự kết hợp độc đáo giữa K COFFEE và nghệ thuật</h3>
+                        <a href="#" class="news-link">Đọc tiếp <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: -4px; margin-left: 5px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_2-mat_Buom-580x580.jpg" alt="News 4">
+                    <div class="news-content">
+                        <span class="news-date">25/09/2026</span>
+                        <h3 class="news-title">Ra mắt bộ sưu tập Merchandise ý nghĩa</h3>
+                        <a href="#" class="news-link">Đọc tiếp <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: -4px; margin-left: 5px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL SECTION -->
+    <section class="section-padding" id="testimonials" style="background: var(--c-bg); position: relative; overflow: hidden;">
+        <div class="watermark" style="top: 30%; right: -5%; left: auto; transform: none; text-align: right; letter-spacing: -2px;">REVIEW</div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <p class="tagline">Góc Nhìn</p>
+            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md);">Lời Nhắn Nhủ</h2>
+            <div class="testimonial-wrapper" style="position: relative;">
+                <div class="testimonial-slider" id="testi-slider">
+
+                <div class="testi-item">
+                    <p class="testi-quote">"Những bức tranh không chỉ đẹp về mặt nghệ thuật mà còn mang trong mình một tâm hồn vô cùng trong trẻo, hồn nhiên. Mỗi nét vẽ đều chứa đựng tình yêu thương."</p>
+                    <p class="testi-author">- Chuyên gia phê bình nghệ thuật</p>
+                </div>
+                <div class="testi-item">
+                    <p class="testi-quote">"Một dự án ý nghĩa giúp thay đổi cuộc đời của biết bao em nhỏ. Nghệ thuật đích thực là nghệ thuật vị nhân sinh."</p>
+                    <p class="testi-author">- BS. Nguyễn Văn A</p>
+                </div>
+                <div class="testi-item">
+                    <p class="testi-quote">"Cherry đã truyền cảm hứng lớn cho thế hệ trẻ về lòng nhân ái."</p>
+                    <p class="testi-author">- Báo Tuổi Trẻ</p>
+                </div>
+                <div class="testi-item">
+                    <p class="testi-quote">"Những bức tranh không chỉ đẹp về mặt nghệ thuật mà còn mang trong mình một tâm hồn vô cùng trong trẻo, hồn nhiên. Mỗi nét vẽ đều chứa đựng tình yêu thương."</p>
+                    <p class="testi-author">- Chuyên gia phê bình nghệ thuật</p>
+                </div>
+            </div>
+                <div class="testi-nav">
+                    <button id="testi-prev" class="testi-nav-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                    <button id="testi-next" class="testi-nav-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHEDULE SECTION -->
+    <section class="section-padding" id="schedule">
+        <div class="container">
+            <p class="tagline">Lịch trình</p>
+            <h2 class="vibe-heading schedule-heading">Triển lãm 2026</h2>
+            <div class="schedule-timeline">
+                
+                <!-- Event 1 -->
+                <div class="schedule-item">
+                    <div class="schedule-dot schedule-dot-active"></div>
+                    <p class="schedule-date schedule-date-active">11/10 - 23/10/2026</p>
+                    <h3 class="schedule-venue"><span class="brand-kcoffee">K&nbsp;COFFEE</span> Mỹ Thái</h3>
+                    <p class="vibe-text">41 Đường 17, Khu phố Mỹ Thái 2, Phường Tân Phú, Quận 7, TP.HCM</p>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="schedule-item">
+                    <div class="schedule-dot schedule-dot-upcoming"></div>
+                    <p class="schedule-date schedule-date-upcoming">25/10 - 07/11/2026</p>
+                    <h3 class="schedule-venue schedule-venue-upcoming"><span class="brand-kcoffee">K&nbsp;COFFEE</span> Nguyễn Thái Bình</h3>
+                    <p class="vibe-text">156-158 Nguyễn Thái Bình, Phường Bến Thành, Quận 1, TP.HCM</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MERCHANDISE SECTION -->
+    <section class="section-padding" id="merch" style="background: var(--c-bg); position: relative; overflow: hidden;">
+        <div class="watermark" style="top: 15%; right: -5%; left: auto; transform: none; text-align: right; letter-spacing: -2px;">MERCH</div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <p class="tagline"><span class="brand-kcoffee">K&nbsp;COFFEE</span> x Cherry</p>
+            <h2 class="vibe-heading" style="margin-bottom: var(--sp-md);">Sản phẩm &<br/>Lan tỏa yêu thương</h2>
+            <div style="max-width: 600px; margin-bottom: 40px; font-size: 1.1rem; color: var(--c-text-mut);">
+                <p><span class="brand-kcoffee">K&nbsp;COFFEE</span> vinh dự mang những nét vẽ của bé Cherry lên các sản phẩm túi Canvas và túi PP dệt. Đặc biệt, 50% doanh thu từ việc bán túi sẽ tiếp tục được sử dụng để hỗ trợ các bệnh nhi và trẻ em có hoàn cảnh khó khăn.</p>
+            </div>
+            
+            <div class="merch-carousel-wrapper" style="position: relative;">
+                <button class="merch-nav merch-prev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                <div class="merch-product-grid" id="merch-grid">
+                    <div class="merch-card">
+                        <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_2-mat_Buom-580x580.jpg" alt="Túi Bướm">
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_2-mat_BoLV-580x580.jpg" alt="Túi Bé LV">
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_detMeo-1024x1024.jpg" alt="Áo Mèo">
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_det_Laudainam-1024x1024.jpg" alt="Cốc">
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_detDonutjpg-1024x1024.jpg" alt="Sổ">
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_2-mat_Buom-580x580.jpg" alt="Túi Tote">
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_2-mat_BoLV-580x580.jpg" alt="Tranh">
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://cherry.kcoffee.vn/wp-content/uploads/2024/09/KCoffeeloveCherry_vuong_xanh_detMeo-1024x1024.jpg" alt="Bình nước">
+                    </div>
+                </div>
+                <button class="merch-nav merch-next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: middle;"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            </div>
+            <div style="text-align: left;"><a href="#" class="pill-btn" style="margin-top: 20px;">Đồng hành</a></div>
+        </div>
+    </section>
+      <!-- CONTACT SECTION -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <p class="tagline">Kết nối yêu thương</p>
+                    <h2 class="vibe-heading" style="margin-bottom: 20px;">Gửi Thông Điệp</h2>
+                    <p class="vibe-text contact-desc" style="padding-right: 20px;">
+                        Mỗi bức tranh được trao đi là một niềm hy vọng được thắp lên. Nếu bạn muốn sở hữu tác phẩm của Cherry để đồng hành cùng quỹ, hay đơn giản là gửi một lời chúc đến cô họa sĩ nhí, hãy để lại lời nhắn cho chúng tôi.
+                    </p>
+                </div>
+                <div>
+                    <form class="contact-form">
+                        <div class="contact-inputs-row">
+                            <input type="text" placeholder="Họ và tên *" class="contact-field" required>
+                            <input type="tel" placeholder="Số điện thoại *" class="contact-field" required>
+                        </div>
+                        <input type="email" placeholder="Email" class="contact-field">
+                        <textarea placeholder="Lời nhắn của bạn..." rows="4" class="contact-field contact-field-textarea"></textarea>
+                        
+                        <div class="contact-submit-wrap">
+                            <button type="submit" class="pill-btn contact-submit-btn">Gửi Thông Điệp</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="padding: var(--sp-xl) 0 var(--sp-md) 0; border-top: 1px solid var(--c-border); color: var(--c-text);">
+        <div class="container">
+            <!-- Footer Branding -->
+            <div style="text-align: center; margin-bottom: var(--sp-xl);">
+                <h2 class="vibe-heading" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; margin-bottom: 10px;">Cherry <span style="font-family: var(--f-sans); font-weight: 300; font-size: 0.6em; opacity: 0.5; vertical-align: middle;">&times;</span> K COFFEE</h2>
+                <p style="font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--c-text-mut);">Lan Tỏa Yêu Thương</p>
+            </div>
+
+            <!-- Footer Info -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); padding: 40px 0;">
+                
+                <!-- Col 1: Quỹ Thiện Nguyện (Mua tranh) -->
+                <div>
+                    <h4 style="font-family: var(--f-sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--c-text); margin-bottom: 20px;">Liên Hệ Quỹ Thiện Nguyện</h4>
+                    <div style="font-size: 0.95rem; line-height: 1.8; color: var(--c-text-mut);">
+                        <p><strong style="color: var(--c-text); font-weight: 500;">Hotline:</strong> 0942 560 088 — 0902 983 719 — 0913 921 089</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500;">Email:</strong> admin@phucsinh.com</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500;">Website:</strong> cherry.kcoffee.vn</p>
+                    </div>
+                </div>
+
+                <!-- Col 2: Đơn vị tổ chức (Phúc Sinh) -->
+                <div>
+                    <h4 style="font-family: var(--f-sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--c-text); margin-bottom: 20px;">Đơn Vị Tổ Chức (Phúc Sinh Corp)</h4>
+                    <div style="font-size: 0.95rem; line-height: 1.8; color: var(--c-text-mut);">
+                        <p><strong style="color: var(--c-text); font-weight: 500;">VPĐD:</strong> 246-248 Võ Văn Kiệt, P. Cầu Ông Lãnh, Quận 1, TP.HCM</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500;">Trụ sở:</strong> Số 61 Đường 41, Phường Khánh Hội, Quận 4, TP.HCM</p>
+                        <p><strong style="color: var(--c-text); font-weight: 500;">Liên hệ:</strong> 028 3836.4019 — cs@phucsinhconsumer.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright & Legal -->
+            <div class="footer-bottom" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; padding-top: 20px; font-size: 0.8rem; color: var(--c-text-mut);">
+                <p>&copy; 2026 K COFFEE & Cherry. All rights reserved.</p>
+                <p style="text-align: right; opacity: 0.8;">Giấy ĐKKD: 0314195575 (Sở KH&ĐT TP.HCM cấp 11/01/2017)</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Go Top Button -->
+    <a href="#" class="gotop-btn" id="gotop-btn" aria-label="Lên đầu trang">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // Theme Toggle Logic
+        const themeBtn = document.getElementById('theme-toggle');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            });
+        }
+
+        // Hamburger Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            // Close menu when a link is clicked
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // 1. Fancybox Advanced Initialization (No HTML changes needed)
+        if (typeof Fancybox !== 'undefined') {
+            
+            // Loop through GLightbox links and format them for Fancybox
+            const galleryLinks = document.querySelectorAll('.art-card a.glightbox');
+            galleryLinks.forEach(link => {
+                link.setAttribute('data-fancybox', 'artworks');
+                // Use the image src as thumb
+                const img = link.querySelector('img');
+                if (img) link.setAttribute('data-thumb', img.src);
+            });
+
+            Fancybox.bind('[data-fancybox="artworks"]', {
+                Hash: false, // Prevent URL hash from opening lightbox
+                Images: { zoom: false }, // Disable image zooming
+                compact: false, // Ensure full UI
+                idle: false, // Don't hide toolbar
+                Thumbs: {
+                    type: "classic",
+                    position: "bottom" // Thumbnails at the bottom
+                },
+                caption: function (fancybox, slide) {
+                    // Extract caption from data-description to keep HTML intact
+                    return slide.triggerEl?.getAttribute("data-description") || "";
+                },
+                on: {
+                    done: (fancybox, slide) => {
+                        // Check if sold
+                        const desc = slide.triggerEl?.getAttribute("data-description") || "";
+                        const isSold = desc.includes('Đã bán') || desc.includes('Da b'); 
+                        
+                        if (isSold && slide.$content) {
+                            // Prevent adding multiple stickers
+                            if (!slide.$content.querySelector('.fancybox-sold-sticker')) {
+                                const sticker = document.createElement('div');
+                                sticker.className = 'fancybox-sold-sticker';
+                                sticker.innerHTML = 'SOLD';
+                                
+                                // Find the actual image wrapper inside Fancybox
+                                const imgContainer = slide.$content; 
+                                imgContainer.style.position = 'relative';
+                                imgContainer.appendChild(sticker);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 2. Open Gallery Button Trigger
+        const openGalleryBtns = document.querySelectorAll('.btn-open-gallery');
+        openGalleryBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const firstArt = document.querySelector('[data-fancybox="artworks"]');
+                if (firstArt) {
+                    firstArt.click();
+                }
+            });
+        });
+
+        // 3. Horizontal Scroll Logic for Gallery (Synced)
+        const stickyContainer = document.querySelector('.sticky-container');
+        const stickyWrapper = document.querySelector('.sticky-wrapper');
+        const horizontalTrack = document.querySelector('.horizontal-track');
+
+        if (stickyContainer && stickyWrapper && horizontalTrack) {
+            function updateScroll() {
+                const containerRect = stickyContainer.getBoundingClientRect();
+                const containerTop = containerRect.top;
+                
+                if (containerTop <= 0) {
+                    const maxScroll = stickyContainer.offsetHeight - window.innerHeight;
+                    const currentScroll = Math.abs(containerTop);
+                    
+                    let progress = currentScroll / maxScroll;
+                    progress = Math.max(0, Math.min(1, progress));
+                    
+                    const maxTranslate = horizontalTrack.scrollWidth - window.innerWidth;
+                    const translateX = progress * maxTranslate;
+                    
+                    horizontalTrack.style.transform = `translate3d(-${translateX}px, 0, 0)`;
+                } else {
+                    horizontalTrack.style.transform = `translate3d(0, 0, 0)`;
+                }
+            }
+
+            window.addEventListener('scroll', updateScroll, { passive: true });
+            window.addEventListener('resize', updateScroll);
+            updateScroll();
+
+            // Ánh xạ vuốt ngang/scroll ngang thành cuộn dọc để giữ đồng bộ tiến trình (CÓ QUÁN TÍNH)
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let lastX = 0;
+            let lastTime = 0;
+            let velocityX = 0;
+            let isHorizontalSwipe = false;
+            let isTouching = false;
+            
+            stickyWrapper.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                lastX = touchStartX;
+                lastTime = performance.now();
+                velocityX = 0;
+                isHorizontalSwipe = false;
+                isTouching = true;
+            }, { passive: true });
+
+            stickyWrapper.addEventListener('touchmove', (e) => {
+                if (!isTouching) return;
+                
+                const x = e.touches[0].clientX;
+                const y = e.touches[0].clientY;
+                const now = performance.now();
+                
+                const totalDeltaX = Math.abs(touchStartX - x);
+                const totalDeltaY = Math.abs(touchStartY - y);
+
+                // Khóa hướng vuốt ngang nếu người dùng lướt ngang vượt ngưỡng
+                if (!isHorizontalSwipe && totalDeltaX > 10 && totalDeltaX > totalDeltaY) {
+                    isHorizontalSwipe = true;
+                }
+
+                if (isHorizontalSwipe) {
+                    const dt = Math.max(1, now - lastTime);
+                    const instantDeltaX = lastX - x;
+                    
+                    velocityX = instantDeltaX / dt; // tính vận tốc pixels/ms
+                    
+                    window.scrollBy(0, instantDeltaX * 2.5); // Nhân hệ số để vuốt nhanh hơn
+                    e.preventDefault(); // Chặn hành vi vuốt dọc của trang
+                }
+                
+                lastX = x;
+                lastTime = now;
+            }, { passive: false });
+
+            // Xử lý quán tính (momentum) khi nhấc ngón tay lên
+            stickyWrapper.addEventListener('touchend', () => {
+                isTouching = false;
+                if (isHorizontalSwipe && Math.abs(velocityX) > 0.5) {
+                    applyInertia(velocityX * 16); // Chuẩn hóa vận tốc
+                }
+            });
+
+            function applyInertia(speed) {
+                if (isTouching || Math.abs(speed) < 0.5) return; // Dừng lại nếu chạm tiếp hoặc tốc độ quá nhỏ
+                
+                window.scrollBy(0, speed * 2.5);
+                
+                // Giảm tốc dần đều (Friction)
+                requestAnimationFrame(() => applyInertia(speed * 0.92));
+            }
+
+            // Hỗ trợ chuột có con lăn ngang hoặc trackpad trên PC (Hệ điều hành đã có sẵn quán tính cho wheel)
+            stickyWrapper.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                    window.scrollBy(0, e.deltaX * 2);
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        }
+        // 4. Testimonial Nav Logic
+        const testiSlider = document.getElementById('testi-slider');
+        const testiPrev = document.getElementById('testi-prev');
+        const testiNext = document.getElementById('testi-next');
+        if (testiSlider && testiPrev && testiNext) {
+            testiNext.addEventListener('click', () => {
+                testiSlider.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+            testiPrev.addEventListener('click', () => {
+                testiSlider.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+        }
+
+        // Merch Carousel Logic
+        const merchGrid = document.getElementById('merch-grid');
+        const merchPrev = document.querySelector('.merch-prev');
+        const merchNext = document.querySelector('.merch-next');
+        if (merchGrid && merchPrev && merchNext) {
+            merchPrev.addEventListener('click', () => {
+                merchGrid.scrollBy({ left: -merchGrid.clientWidth, behavior: 'smooth' });
+            });
+            merchNext.addEventListener('click', () => {
+                merchGrid.scrollBy({ left: merchGrid.clientWidth, behavior: 'smooth' });
+            });
+        }
+
+        // 5. Number Animation
+        const counters = document.querySelectorAll('.stat-counter');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    let count = 0;
+                    const updateCount = () => {
+                        const inc = target / 50;
+                        if (count < target) {
+                            count += inc;
+                            entry.target.innerText = Math.ceil(count).toLocaleString('en-US');
+                            setTimeout(updateCount, 20);
+                        } else {
+                            entry.target.innerText = target.toLocaleString('en-US');
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(counter => observer.observe(counter));
+    </script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Lenis Smooth Scroll (QuÃ¡n tÃ­nh) -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script>
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // --- ADVANCED GSAP ANIMATIONS & EFFECTS ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Sync Lenis with GSAP ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000) });
+        gsap.ticker.lagSmoothing(0);
+
+        // 1. Text Split Reveal for Hero Title
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            const lines = heroTitle.innerHTML.split(/<br\s*\/?>/i);
+            heroTitle.innerHTML = lines.map(line => `<span style="display:block; overflow:hidden; padding-bottom: 10px;"><span class="hero-line-inner" style="display:block; transform: translateY(115%);">${line}</span></span>`).join('');
+        }
+
+        const tlHero = gsap.timeline();
+        tlHero.to(".hero-line-inner", { y: "0%", duration: 1.2, stagger: 0.15, ease: "expo.out", delay: 0.2 })
+              .from(".hero-desc", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8")
+              .from(".hero .pill-btn", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.9")
+              .fromTo(".hero-img-wrap img", { clipPath: "inset(20% 20% 20% 20%)", filter: "blur(10px)", scale: 1.3 }, { clipPath: "inset(0% 0% 0% 0%)", filter: "blur(0px)", scale: 1, duration: 1.8, ease: "expo.inOut", clearProps: "clipPath,filter" }, "-=1.2")
+              .from(".circle-btn", { scale: 0, opacity: 0, duration: 0.8, ease: "back.out(1.7)", clearProps: "all" }, "-=1");
+
+        // 2. Magnetic Buttons (Interactive Physics)
+        const magnetBtns = document.querySelectorAll('.circle-btn');
+        magnetBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.4;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.4;
+                gsap.to(btn, { x: x, y: y, duration: 0.4, ease: "power2.out" });
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+            });
+        });
+
+        // 3. Velocity Skew Effect (Scroll-driven inertia)
+        lenis.on('scroll', (e) => {
+            const skewY = Math.max(-3, Math.min(3, e.velocity * 0.15));
+            gsap.to('.news-card, .merch-card', { 
+                skewY: skewY, 
+                duration: 0.2, 
+                overwrite: "auto",
+                transformOrigin: "center center"
+            });
+            // Snap back
+            gsap.to('.news-card, .merch-card', { skewY: 0, duration: 0.6, ease: "power3.out", delay: 0.1 });
+        });
+
+        // Horizontal velocity skew for gallery
+        let lastHScroll = 0;
+        let lastHTime = Date.now();
+        const hTrack = document.querySelector('.horizontal-track');
+        if (hTrack) {
+            hTrack.addEventListener('scroll', () => {
+                const now = Date.now();
+                const dx = hTrack.scrollLeft - lastHScroll;
+                const dt = now - lastHTime;
+                const vel = dx / (dt || 1);
+                const skewX = Math.max(-5, Math.min(5, vel * -1.5));
+                
+                gsap.to('.art-card img', { skewX: skewX, scale: 1.02, duration: 0.3, overwrite: "auto" });
+                gsap.to('.art-card img', { skewX: 0, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.4)", delay: 0.1 });
+                
+                lastHScroll = hTrack.scrollLeft;
+                lastHTime = now;
+            });
+        }
+
+        // 4. Infinite Marquee + Parallax Watermarks
+        gsap.utils.toArray('.watermark').forEach(wm => {
+            const text = wm.innerText.trim();
+            // Duplicate text to create a seamless loop (adding a bullet dot for aesthetics)
+            const repeatCount = 8;
+            let trackHTML = '<div class="wm-track">';
+            for(let i=0; i<repeatCount; i++) {
+                trackHTML += `<span style="padding-right: 5vw;">${text} &bull;</span>`;
+            }
+            trackHTML += '</div>';
+            wm.innerHTML = trackHTML;
+
+            const track = wm.querySelector('.wm-track');
+            
+            // Infinite horizontal crawl (-50% because we doubled the necessary width)
+            gsap.to(track, { xPercent: -50, duration: 25, repeat: -1, ease: "none" });
+            
+            // Vertical parallax on scroll
+            gsap.to(wm, {
+                y: 150, 
+                ease: "none",
+                scrollTrigger: { trigger: wm.parentElement, start: "top bottom", end: "bottom top", scrub: true }
+            });
+        });
+
+        // 5. Cinematic Image Reveals (Clip-Path + Image Scale Parallax)
+        gsap.utils.toArray('.author-img-wrap').forEach(wrap => {
+            const img = wrap.querySelector('img');
+            const tl = gsap.timeline({
+                scrollTrigger: { trigger: wrap, start: "top 80%" }
+            });
+            tl.fromTo(wrap, { clipPath: "polygon(0% 20%, 100% 20%, 100% 80%, 0% 80%)", filter: "grayscale(100%) blur(5px)" },
+                            { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", filter: "grayscale(0%) blur(0px)", duration: 1.6, ease: "expo.inOut" })
+              .fromTo(img, { scale: 1.4 }, { scale: 1, duration: 2, ease: "power3.out" }, "-=1.6");
+        });
+
+        // 6. Global Section Titles Reveal (Words Stagger)
+        gsap.utils.toArray('.vibe-heading:not(.hero-title)').forEach(heading => {
+            const text = heading.innerText;
+            heading.innerHTML = text.split(' ').map(word => `<span style="display:inline-block; overflow:hidden;"><span class="vibe-word" style="display:inline-block; transform: translateY(110%);">${word}</span></span>`).join(' ');
+            
+            gsap.to(heading.querySelectorAll('.vibe-word'), {
+                scrollTrigger: { trigger: heading, start: "top 85%" },
+                y: "0%", duration: 1, stagger: 0.08, ease: "power4.out"
+            });
+        });
+
+        // 7. Staggered Elements Reveal
+        gsap.from(".news-card", { scrollTrigger: { trigger: ".news-grid", start: "top 85%" }, y: 80, opacity: 0, duration: 1, stagger: 0.15, ease: "expo.out" });
+
+        // Xá»­ lÃ½ cÃ¡c link neo (anchor) mÆ°á»£t mÃ  vá»›i Lenis
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        lenis.scrollTo(targetElement);
+                        
+                        // ÄÃ³ng menu trÃªn mobile
+                        const navLinks = document.getElementById('nav-links');
+                        const hamburger = document.getElementById('hamburger');
+                        if (navLinks && navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    }
+                } else {
+                    // Xá»­ lÃ½ click href="#" (Logo hoáº·c nÃºt Go Top)
+                    e.preventDefault();
+                    lenis.scrollTo(0);
+                }
+            });
+        });
+
+        // Hiá»ƒn thá»‹/áº¨n nÃºt Go Top khi cuá»™n
+        const goTopBtn = document.getElementById('gotop-btn');
+        if (goTopBtn) {
+            lenis.on('scroll', (e) => {
+                if (window.scrollY > 500) {
+                    goTopBtn.classList.add('is-visible');
+                } else {
+                    goTopBtn.classList.remove('is-visible');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
