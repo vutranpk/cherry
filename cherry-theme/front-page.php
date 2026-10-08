@@ -182,9 +182,7 @@
                     <p class="tagline">Tin Tức</p>
                     <h2 class="vibe-heading">Báo Chí &<br/>Sự kiện</h2>
                 </div>
-                <div class="hide-mobile">
-                    <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="pill-btn outline">Xem tất cả</a>
-                </div>
+                
             </div>
             
             <div class="news-grid">
@@ -210,13 +208,15 @@
                 endif;
                 ?>
             </div>
-            <div class="show-mobile" style="margin-top: var(--sp-md); text-align: center; display: none;">
-                <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="pill-btn outline">Xem tất cả</a>
+            
+        
+            </div> <!-- closing news-grid -->
+            <div style="text-align: center; margin-top: var(--sp-xl);">
+                <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="pill-btn">Xem Tất Cả Tin Tức & Sự Kiện</a>
             </div>
+
         </div>
     </section>
-        
-
     <section class="section-padding" id="testimonials" style="background: var(--c-bg-alt); position: relative; overflow: hidden;">
         <div class="container" style="position: relative; z-index: 2;">
             <p class="tagline" style="text-align:center;">Góc Nhìn</p>
