@@ -10,8 +10,8 @@ if (!defined('ABSPATH')) exit;
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --c-bg: #1a1a1a;
-            --c-text: #ffffff;
+            --c-bg: #fffdfa;
+            --c-text: #1a1a1a;
             --c-accent: #e25e3b;
             --f-sans: 'Space Grotesk', sans-serif;
             --f-serif: 'Instrument Serif', serif;
@@ -55,7 +55,7 @@ if (!defined('ABSPATH')) exit;
             padding: 40px;
         }
         .logo-wrap { margin-bottom: 2rem; }
-        .logo-wrap img { height: 60px; filter: brightness(0) invert(1); }
+        .logo-wrap img { height: 60px;  }
         h1 {
             font-family: var(--f-serif);
             font-style: italic;
@@ -73,7 +73,7 @@ if (!defined('ABSPATH')) exit;
         .pill-btn {
             display: inline-block;
             padding: 14px 35px;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(0,0,0,0.2);
             border-radius: 50px;
             color: var(--c-text);
             text-decoration: none;
