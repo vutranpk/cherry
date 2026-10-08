@@ -34,7 +34,7 @@
 
             <!-- Copyright & Legal -->
             <div class="footer-bottom" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; padding-top: 20px; font-size: 0.8rem; color: var(--c-text-mut);">
-                <p>&copy; 2026 K COFFEE & Cherry. All rights reserved.</p>
+                <p>&copy; <?php echo date('Y'); ?> K COFFEE & Cherry. All rights reserved.</p>
                 <p style="text-align: right; opacity: 0.8; font-style: italic;">Giấy ĐKKD: 0314195575 (Sở KH&ĐT TP.HCM cấp 11/01/2017)</p>
             </div>
         </div>
