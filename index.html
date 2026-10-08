@@ -1076,17 +1076,17 @@
             
             <div class="impact-stats-wrap">
                 <div class="impact-stat-item">
-                    <div class="impact-number">51</div>
+                    <div class="impact-number stat-counter" data-target="51">0</div>
                     <div class="impact-label">Bức tranh đã bán</div>
                     <div class="impact-sub">(2024 - 2025)</div>
                 </div>
                 <div class="impact-stat-item">
-                    <div class="impact-number">400<span class="impact-unit">tr</span> +</div>
+                    <div class="impact-number"><span class="stat-counter" data-target="400">0</span><span class="impact-unit">tr</span> +</div>
                     <div class="impact-label">VNĐ Doanh thu</div>
                     <div class="impact-sub">(Đóng góp 100%)</div>
                 </div>
                 <div class="impact-stat-item">
-                    <div class="impact-number impact-number-accent">53</div>
+                    <div class="impact-number impact-number-accent stat-counter" data-target="53">0</div>
                     <div class="impact-label">Ca phẫu thuật</div>
                     <div class="impact-sub">(Được hỗ trợ chi phí)</div>
                 </div>
@@ -1706,7 +1706,20 @@
         });
 
         // 7. Staggered Elements Reveal
-        gsap.from(".news-card", { scrollTrigger: { trigger: ".news-grid", start: "top 85%" }, y: 80, opacity: 0, duration: 1, stagger: 0.15, ease: "expo.out" });
+        gsap.from(".news-card", { scrollTrigger: { trigger: ".news-slider", start: "top 85%" }, y: 80, opacity: 0, duration: 1, stagger: 0.15, ease: "expo.out" });
+        
+        // Impact stats stagger
+        gsap.from(".impact-stat-item", { scrollTrigger: { trigger: ".impact-stats-wrap", start: "top 85%" }, y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out" });
+        
+        // Vibe text fade ups
+        gsap.utils.toArray(".vibe-text, .tagline").forEach(text => {
+            gsap.from(text, { scrollTrigger: { trigger: text, start: "top 90%" }, y: 30, opacity: 0, duration: 1.2, ease: "power2.out" });
+        });
+        
+        // Content blocks (author content, merch grid)
+        gsap.from(".author-content > *", { scrollTrigger: { trigger: ".author-content", start: "top 80%" }, y: 40, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out" });
+        gsap.from(".merch-card", { scrollTrigger: { trigger: ".merch-grid", start: "top 85%" }, y: 60, opacity: 0, duration: 1, stagger: 0.15, ease: "power4.out" });
+        gsap.from(".schedule-item", { scrollTrigger: { trigger: ".schedule-timeline", start: "top 85%" }, x: -40, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out" });
 
         // Xá»­ lÃ½ cÃ¡c link neo (anchor) mÆ°á»£t mÃ  vá»›i Lenis
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1749,6 +1762,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
