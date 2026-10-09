@@ -46,6 +46,12 @@ if(empty($meta_desc)) {
     <meta property="twitter:description" content="<?php echo esc_attr($meta_desc); ?>">
     <meta property="twitter:image" content="<?php echo esc_url($meta_image); ?>">
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
