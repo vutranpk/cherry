@@ -234,14 +234,14 @@ function cherry_acf_add_local_field_groups() {
 
 
 
+
+
 // ==========================================
 // CHẾ ĐỘ BẢO TRÌ (MAINTENANCE MODE)
 // ==========================================
-// Đổi giá trị false thành true để bật trang bảo trì cho khách vãng lai.
-// Quản trị viên (đã đăng nhập) vẫn sẽ xem được website bình thường để test.
- = false; 
+$cherry_maintenance_mode = false; 
 
-if () {
+if ($cherry_maintenance_mode) {
     add_action('template_redirect', 'cherry_enable_maintenance_mode');
 }
 function cherry_enable_maintenance_mode() {
@@ -256,7 +256,7 @@ function cherry_enable_maintenance_mode() {
 // ==========================================
 function cherry_register_strings() {
     if (function_exists('pll_register_string')) {
-        \ = array(
+        $strings = array(
             'Triển lãm nghệ thuật Vị Nhân Sinh',
             'Lan tỏa yêu thương qua từng nét vẽ. Mỗi tác phẩm là một câu chuyện, một hy vọng gửi đến các em nhỏ có hoàn cảnh khó khăn.',
             'Khám Phá Bộ Sưu Tập',
@@ -318,25 +318,25 @@ function cherry_register_strings() {
             'Trang bạn đang tìm kiếm có thể đã bị xóa, đổi tên hoặc tạm thời không truy cập được.',
             'Trở về Trang chủ'
         );
-        foreach(\ as \) {
-            pll_register_string('cherry_theme', \, 'Cherry Theme');
+        foreach($strings as $str) {
+            pll_register_string('cherry_theme', $str, 'Cherry Theme');
         }
     }
 }
 add_action('init', 'cherry_register_strings');
 
-function cherry_e(\) {
+function cherry_e($string) {
     if (function_exists('pll_e')) {
-        pll_e(\);
+        pll_e($string);
     } else {
-        echo \;
+        echo $string;
     }
 }
-function cherry__(\) {
+function cherry__($string) {
     if (function_exists('pll__')) {
-        return pll__(\);
+        return pll__($string);
     }
-    return \;
+    return $string;
 }
 
 // ==========================================
@@ -344,70 +344,70 @@ function cherry__(\) {
 // ==========================================
 // 1. CỘT CHO BỘ SƯU TẬP TRANH
 add_filter('manage_artwork_posts_columns', 'cherry_set_custom_edit_artwork_columns');
-function cherry_set_custom_edit_artwork_columns() {
-     = array();
-    ['cb'] = ['cb'];
-    ['art_thumb'] = 'Hình Tranh';
-    ['title'] = ['title'];
-    ['art_meta'] = 'Thông tin (Năm/Chất liệu)';
-    ['art_price'] = 'Giá bán';
-    ['art_sold'] = 'Tình trạng';
-    ['art_online'] = 'Hiển thị Web';
-    ['date'] = ['date'];
-    return ;
+function cherry_set_custom_edit_artwork_columns($columns) {
+    $new_columns = array();
+    $new_columns['cb'] = $columns['cb'];
+    $new_columns['art_thumb'] = 'Hình Tranh';
+    $new_columns['title'] = $columns['title'];
+    $new_columns['art_meta'] = 'Thông tin (Năm/Chất liệu)';
+    $new_columns['art_price'] = 'Giá bán';
+    $new_columns['art_sold'] = 'Tình trạng';
+    $new_columns['art_online'] = 'Hiển thị Web';
+    $new_columns['date'] = $columns['date'];
+    return $new_columns;
 }
 
 add_action('manage_artwork_posts_custom_column', 'cherry_custom_artwork_column', 10, 2);
-function cherry_custom_artwork_column(, ) {
-    switch () {
+function cherry_custom_artwork_column($column, $post_id) {
+    switch ($column) {
         case 'art_thumb':
-            if (has_post_thumbnail()) {
-                echo get_the_post_thumbnail(, array(60, 60));
+            if (has_post_thumbnail($post_id)) {
+                echo get_the_post_thumbnail($post_id, array(60, 60));
             } else {
                 echo '<span style="color:#999;">Chưa có ảnh</span>';
             }
             break;
         case 'art_meta':
-            echo esc_html(get_field('art_meta', ));
+            echo esc_html(get_field('art_meta', $post_id));
             break;
         case 'art_price':
-            echo '<strong>' . esc_html(get_field('art_price', )) . '</strong>';
+            echo '<strong>' . esc_html(get_field('art_price', $post_id)) . '</strong>';
             break;
         case 'art_sold':
-             = get_field('art_sold', );
-            echo  ? '<span style="color:red; font-weight:bold;">🔴 Đã Bán</span>' : '<span style="color:green; font-weight:bold;">🟢 Còn Trống</span>';
+            $sold = get_field('art_sold', $post_id);
+            echo $sold ? '<span style="color:red; font-weight:bold;">🔴 Đã Bán</span>' : '<span style="color:green; font-weight:bold;">🟢 Còn Trống</span>';
             break;
         case 'art_online':
-             = get_field('art_online', );
-            echo  ? '<span style="color:blue; font-weight:bold;">🌐 Đang Online</span>' : '<span style="color:gray;">Ẩn (Offline)</span>';
+            $online = get_field('art_online', $post_id);
+            echo $online ? '<span style="color:blue; font-weight:bold;">🌐 Đang Online</span>' : '<span style="color:gray;">Ẩn (Offline)</span>';
             break;
     }
 }
 
 // 2. CỘT CHO SẢN PHẨM
 add_filter('manage_merch_posts_columns', 'cherry_set_custom_edit_merch_columns');
-function cherry_set_custom_edit_merch_columns() {
-     = array();
-    ['cb'] = ['cb'];
-    ['merch_thumb'] = 'Ảnh Sản Phẩm';
-    ['title'] = ['title'];
-    ['merch_link'] = 'Link trỏ về';
-    ['date'] = ['date'];
-    return ;
+function cherry_set_custom_edit_merch_columns($columns) {
+    $new_columns = array();
+    $new_columns['cb'] = $columns['cb'];
+    $new_columns['merch_thumb'] = 'Ảnh Sản Phẩm';
+    $new_columns['title'] = $columns['title'];
+    $new_columns['merch_link'] = 'Link trỏ về';
+    $new_columns['date'] = $columns['date'];
+    return $new_columns;
 }
 
 add_action('manage_merch_posts_custom_column', 'cherry_custom_merch_column', 10, 2);
-function cherry_custom_merch_column(, ) {
-    switch () {
+function cherry_custom_merch_column($column, $post_id) {
+    switch ($column) {
         case 'merch_thumb':
-            if (has_post_thumbnail()) {
-                echo get_the_post_thumbnail(, array(60, 60));
+            if (has_post_thumbnail($post_id)) {
+                echo get_the_post_thumbnail($post_id, array(60, 60));
             }
             break;
         case 'merch_link':
-             = get_field('merch_link', );
-            if () {
-                echo '<a href="'.esc_url().'" target="_blank" style="color:#0071a1; font-weight:500;">🔗 Click xem link</a>';
+            $link = get_field('merch_link', $post_id);
+            if ($link) {
+                echo '<a href="'.esc_url($link).'" target="_blank" style="color:#0071a1; font-weight:500;">🔗 Click xem link</a>';
             }
             break;
     }
