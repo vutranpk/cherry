@@ -422,7 +422,6 @@
             margin: var(--sp-sm) auto;
         }
 
-        #merch, #contact { min-height: 100vh; display: flex; align-items: center; width: 100%; }
         #schedule .container, #merch .container, #contact .container { width: 100%; }
         #schedule .container { display: flex; flex-direction: column; align-items: center; text-align: center; }
         .schedule-timeline { border-left: none; padding-left: 0; position: relative; margin-top: var(--sp-sm); text-align: center; width: 100%; display: flex; gap: var(--sp-lg); justify-content: center; }
@@ -573,7 +572,6 @@
             gap: var(--sp-lg);
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            padding-bottom: var(--sp-md);
             -ms-overflow-style: none; /* IE/Edge */
             scrollbar-width: none; /* Firefox */
         }
@@ -604,17 +602,21 @@
         }
         .news-link { font-size: var(--fs-small); font-weight: var(--fw-medium); color: var(--c-accent); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
         
-                .testimonial-slider { display: flex; gap: var(--sp-md); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-behavior: smooth; }
+        .testimonial-slider { display: flex; gap: var(--sp-md); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-behavior: smooth; }
         .testimonial-slider::-webkit-scrollbar { display: none; }
-        .testi-item { flex: 0 0 calc(50% - (var(--sp-md) / 2)); scroll-snap-align: start; padding: var(--sp-lg); background: var(--c-bg); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; border-radius: var(--br-md); box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); }
-        .testi-quote { font-family: var(--f-sans); font-size: 1.1rem; line-height: 1.6; margin-bottom: var(--sp-md); text-align: left; font-style: italic; color: var(--c-text); }
+        .testi-item { flex: 0 0 calc(50% - (var(--sp-md) / 2)); scroll-snap-align: start; padding: var(--sp-lg); background: var(--c-bg); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;}
+        .testi-quote { font-family: var(--f-sans); font-size: 1.1rem; line-height: 1.6;text-align: left; font-style: italic; color: var(--c-text); }
         .testi-author-wrap { display: flex; align-items: center; gap: 15px; }
         .avata-testimonials { width: 56px; height: 56px; overflow: hidden; border-radius: 50%; flex-shrink: 0; }
         .avata-testimonials img { width: 100%; height: 100%; object-fit: cover; }
         .testi-author-info { display: flex; flex-direction: column; }
         .testi-author { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; font-weight: var(--fw-bold); color: var(--c-text); margin: 0; }
         .testi-role { font-size: 0.85rem; color: var(--c-text-mut); margin: 3px 0 0 0; }
-          @media (max-width: 1023px) {
+        .testi-svg {
+            font-size: var(--sp-xl);
+            font-family: var(--f-script);
+        }
+        @media (max-width: 1023px) {
             .news-card { flex: 0 0 calc(50% - (var(--sp-lg) / 2)); }
         }
         @media (max-width: 767px) {
@@ -624,7 +626,7 @@
                 flex-direction: column;
             }
         }
-                .testi-nav { display: flex; justify-content: center; gap: 15px; margin-top: var(--sp-md); }
+        .testi-nav { display: flex; justify-content: center; gap: 15px; margin-top: var(--sp-md); }
         .testi-nav-btn { background: var(--c-text); color: var(--c-bg); border: none; width: 40px; height: 40px; cursor: pointer; transition: opacity 0.3s ease; }
         .testi-nav-btn:hover { opacity: 0.8; }
         .testi-nav-btn i { font-size: 1rem; }
@@ -779,7 +781,6 @@
             background: #fff;
             
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         .merch-card img {
             width: 100%;
@@ -1239,9 +1240,6 @@
               <div class="testimonial-wrapper" style="position: relative;">
                   <div class="testimonial-slider" id="testi-slider">
                       <div class="testi-item">
-                          <div style="color: var(--c-accent); margin-bottom: 15px;">
-                              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"/></svg>
-                          </div>
                           <p class="testi-quote">"Những bức tranh không chỉ đẹp về mặt nghệ thuật mà còn mang trong mình một tâm hồn vô cùng trong trẻo, hồn nhiên. Mỗi nét vẽ đều chứa đựng tình yêu thương."</p>
                           <div class="testi-author-wrap">
                               <span class="avata-testimonials"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Author"></span>
@@ -1252,9 +1250,6 @@
                           </div>
                       </div>
                       <div class="testi-item">
-                          <div style="color: var(--c-accent); margin-bottom: 15px;">
-                              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"/></svg>
-                          </div>
                           <p class="testi-quote">"Một dự án ý nghĩa giúp thay đổi cuộc đời của biết bao em nhỏ. Nghệ thuật đích thực là nghệ thuật vị nhân sinh, và Cherry đã làm được điều phi thường đó."</p>
                           <div class="testi-author-wrap">
                               <span class="avata-testimonials"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&q=80" alt="Author"></span>

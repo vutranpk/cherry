@@ -1,21 +1,21 @@
-﻿<?php
+<?php
 // Lấy các thông tin để gán vào Meta
-\ = get_bloginfo('name');
-\ = get_bloginfo('description');
-global \;
-\ = home_url(add_query_arg(array(), \->request));
+$site_name = get_bloginfo('name');
+$site_desc = get_bloginfo('description');
+global $wp;
+$current_url = home_url(add_query_arg(array(), $wp->request));
 
 if (is_single() || is_page()) {
-    \ = get_the_title() . ' | ' . \;
-    \ = has_excerpt() ? wp_trim_words(get_the_excerpt(), 25) : wp_trim_words(get_post_field('post_content', get_the_ID()), 25);
-    \ = has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'large') : get_template_directory_uri() . '/assets/images/bannerhero.jpg';
+    $meta_title = get_the_title() . ' | ' . $site_name;
+    $meta_desc = has_excerpt() ? wp_trim_words(get_the_excerpt(), 25) : wp_trim_words(get_post_field('post_content', get_the_ID()), 25);
+    $meta_image = has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'large') : get_template_directory_uri() . '/assets/images/bannerhero.jpg';
 } else {
-    \ = \ . ' | ' . \;
-    \ = \;
-    \ = get_template_directory_uri() . '/assets/images/bannerhero.jpg';
+    $meta_title = $site_name . ' | ' . $site_desc;
+    $meta_desc = $site_desc;
+    $meta_image = get_template_directory_uri() . '/assets/images/bannerhero.jpg';
 }
-if(empty(\)) {
-    \ = \;
+if(empty($meta_desc)) {
+    $meta_desc = $site_name;
 }
 ?>
 <!DOCTYPE html>
@@ -26,28 +26,25 @@ if(empty(\)) {
     <meta name="google" content="notranslate">
     
     <!-- Primary Meta Tags (Dynamic SEO) -->
-    <meta name="title" content="<?php echo esc_attr(\); ?>">
-    <meta name="description" content="<?php echo esc_attr(\); ?>">
+    <meta name="title" content="<?php echo esc_attr($meta_title); ?>">
+    <meta name="description" content="<?php echo esc_attr($meta_desc); ?>">
     <meta name="keywords" content="Cherry, K COFFEE, Triển lãm tranh, Họa sĩ nhí, Từ thiện, Sắc màu yêu thương, Nghệ thuật, Gây quỹ">
     <meta name="author" content="Cherry x K COFFEE">
     <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/assets/images/LogoKC.png">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="<?php echo esc_url(\); ?>">
-    <meta property="og:title" content="<?php echo esc_attr(\); ?>">
-    <meta property="og:description" content="<?php echo esc_attr(\); ?>">
-    <meta property="og:image" content="<?php echo esc_url(\); ?>">
+    <meta property="og:url" content="<?php echo esc_url($current_url); ?>">
+    <meta property="og:title" content="<?php echo esc_attr($meta_title); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($meta_desc); ?>">
+    <meta property="og:image" content="<?php echo esc_url($meta_image); ?>">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="<?php echo esc_url(\); ?>">
-    <meta property="twitter:title" content="<?php echo esc_attr(\); ?>">
-    <meta property="twitter:description" content="<?php echo esc_attr(\); ?>">
-    <meta property="twitter:image" content="<?php echo esc_url(\); ?>">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta property="twitter:url" content="<?php echo esc_url($current_url); ?>">
+    <meta property="twitter:title" content="<?php echo esc_attr($meta_title); ?>">
+    <meta property="twitter:description" content="<?php echo esc_attr($meta_desc); ?>">
+    <meta property="twitter:image" content="<?php echo esc_url($meta_image); ?>">
 
     <?php wp_head(); ?>
 </head>
