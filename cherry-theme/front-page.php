@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template Name: Homepage
  */
@@ -87,43 +87,43 @@ get_header(); ?>
   
                   <?php
                   // Lấy danh sách tranh
-                  \ = new WP_Query(array(
+                  $art_query = new WP_Query(array(
                       'post_type' => 'artwork',
                       'posts_per_page' => 10, // Hiển thị 10 bức trong slider ngang
                       'orderby' => 'date',
                       'order' => 'DESC'
                   ));
                   
-                  if (\->have_posts()) :
-                      \ = array('', 'art-card-rotate', 'art-card-sepia');
-                      \ = 0;
-                      while (\->have_posts()) : \->the_post();
-                          \ = get_field('status');
-                          \ = (\ == 'sold') ? 'Đã bán' : '';
-                          \ = get_field('price');
-                          \ = get_field('year');
-                          \ = get_field('material');
-                          \ = get_field('size');
-                          \ = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                          \ = \[\ % 3];
-                          \++;
+                  if ($art_query->have_posts()) :
+                      $card_classes = array('', 'art-card-rotate', 'art-card-sepia');
+                      $i = 0;
+                      while ($art_query->have_posts()) : $art_query->the_post();
+                          $status = get_field('status');
+                          $sold_text = ($status == 'sold') ? 'Đã bán' : '';
+                          $price = get_field('price');
+                          $year = get_field('year');
+                          $material = get_field('material');
+                          $size = get_field('size');
+                          $img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                          $class = $card_classes[$i % 3];
+                          $i++;
                           
-                          \ = "<div class='meta-title'>" . esc_attr(get_the_title()) . "</div><div class='meta-grid'><div>{\} - {\} ({\})</div><div>{\}" . (\ ? " / <span style='color: #ff4d4d; font-weight: bold;'>{\}</span>" : "") . "</div></div>";
+                          $meta_desc = "<div class='meta-title'>" . esc_attr(get_the_title()) . "</div><div class='meta-grid'><div>{$size} - {$material} ({$year})</div><div>{$price}" . ($sold_text ? " / <span style='color: #ff4d4d; font-weight: bold;'>{$sold_text}</span>" : "") . "</div></div>";
                   ?>
                   <!-- Card -->
-                  <div class="art-card <?php echo \; ?>">
+                  <div class="art-card <?php echo $class; ?>">
                       <div class="art-card-img-wrap">
-                          <a href="<?php echo esc_url(\); ?>" class="glightbox" data-gallery="cherry-gallery" data-description="<?php echo esc_attr(\); ?>">
-                              <img src="<?php echo esc_url(\); ?>" alt="<?php the_title_attribute(); ?>">
+                          <a href="<?php echo esc_url($img_url); ?>" class="glightbox" data-gallery="cherry-gallery" data-description="<?php echo esc_attr($meta_desc); ?>">
+                              <img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>">
                           </a>
-                          <?php if (\): ?>
-                              <span class="art-card-badge"><?php echo \; ?></span>
+                          <?php if ($sold_text): ?>
+                              <span class="art-card-badge"><?php echo $sold_text; ?></span>
                           <?php endif; ?>
                       </div>
                       <div class="art-card-info">
                           <h3 class="art-card-title"><?php the_title(); ?></h3>
-                          <p class="art-card-meta"><?php echo esc_html(\); ?> &bull; <?php echo esc_html(\); ?> &bull; <?php echo esc_html(\); ?></p>
-                          <p class="art-card-price"><?php echo esc_html(\); ?></p>
+                          <p class="art-card-meta"><?php echo esc_html($year); ?> &bull; <?php echo esc_html($size); ?> &bull; <?php echo esc_html($material); ?></p>
+                          <p class="art-card-price"><?php echo esc_html($price); ?></p>
                       </div>
                   </div>
                   <?php 
@@ -205,18 +205,18 @@ get_header(); ?>
             
             <div class="news-grid">
                 <?php
-                \ = new WP_Query(array(
+                $news_query = new WP_Query(array(
                     'post_type' => 'post',
                     'posts_per_page' => 3,
                     'orderby' => 'date',
                     'order' => 'DESC'
                 ));
-                if (\->have_posts()) :
-                    while (\->have_posts()) : \->the_post();
-                        \ = get_the_post_thumbnail_url(get_the_ID(), 'medium_large') ?: get_template_directory_uri() . '/assets/images/bannerhero.jpg';
+                if ($news_query->have_posts()) :
+                    while ($news_query->have_posts()) : $news_query->the_post();
+                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium_large') ?: get_template_directory_uri() . '/assets/images/bannerhero.jpg';
                 ?>
                 <div class="news-card">
-                    <a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url(\); ?>" alt="<?php the_title_attribute(); ?>"></a>
+                    <a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>"></a>
                     <div class="news-content">
                         <span class="news-date"><?php echo get_the_date('d/m/Y'); ?></span>
                         <h3 class="news-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
