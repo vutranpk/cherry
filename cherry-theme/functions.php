@@ -1,180 +1,93 @@
 ﻿<?php
-// Tắt Gutenberg cho các CPT nếu cần, hoặc để mặc định
-add_action('after_setup_theme', 'cherry_theme_setup');
-function cherry_theme_setup() {
-    add_theme_support('title-tag');
-    add_theme_support('post-thumbnails');
-    // Khai báo kích thước ảnh nếu cần
-}
+// Bật Thumbnail
+add_theme_support('post-thumbnails');
 
+// Bật Quản lý Title
+add_theme_support('title-tag');
+
+// Nạp CSS và JS
 add_action('wp_enqueue_scripts', 'cherry_enqueue_assets');
 function cherry_enqueue_assets() {
-    // CSS
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap', array(), null);
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array(), '6.4.0');
     wp_enqueue_style('fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css', array(), '5.0');
-    wp_enqueue_style('cherry-main-css', get_template_directory_uri() . '/assets/css/main.css', array(), time());
-    wp_enqueue_style('cherry-style', get_stylesheet_uri(), array(), time());
+    wp_enqueue_style('cherry-main-css', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0');
 
-    // JS
     wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', array(), '3.12.2', true);
-    wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array('gsap'), '3.12.2', true);
-    wp_enqueue_script('lenis', 'https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js', array(), '1.0.27', true);
+    wp_enqueue_script('scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array('gsap'), '3.12.2', true);
+    wp_enqueue_script('lenis', 'https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js', array(), '1.0.19', true);
     wp_enqueue_script('fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array(), '5.0', true);
-    wp_enqueue_script('cherry-main-js', get_template_directory_uri() . '/assets/js/main.js', array('gsap', 'lenis', 'fancybox-js'), time(), true);
+    
+    wp_enqueue_script('cherry-main-js', get_template_directory_uri() . '/assets/js/main.js', array('gsap', 'scrolltrigger', 'lenis', 'fancybox-js'), '1.0', true);
 }
 
-// Đăng ký Custom Post Types
+// KHỞI TẠO CÁC LOẠI BÀI VIẾT TÙY CHỈNH (CUSTOM POST TYPES)
 add_action('init', 'cherry_register_cpts');
 function cherry_register_cpts() {
-    // 1. Artwork (Tranh)
+    // Tranh (Artwork)
     register_post_type('artwork', array(
-        'labels' => array(
-            'name' => 'Bộ Sưu Tập Tranh',
-            'singular_name' => 'Tranh',
-            'add_new_item' => 'Thêm Tranh Mới',
-        ),
-        'public' => true,
-        'has_archive' => true,
+        'labels' => array('name' => 'Bộ Sưu Tập Tranh', 'singular_name' => 'Tranh', 'add_new_item' => 'Thêm Tranh Mới'),
+        'public' => true, 'has_archive' => true,
         'supports' => array('title', 'thumbnail'),
         'menu_icon' => 'dashicons-art',
     ));
-
-    // 2. Testimonial (Lời Nhắn Nhủ)
+    // Góc nhìn (Testimonial)
     register_post_type('testimonial', array(
-        'labels' => array(
-            'name' => 'Góc Nhìn',
-            'singular_name' => 'Lời nhắn',
-            'add_new_item' => 'Thêm Lời Nhắn',
-        ),
+        'labels' => array('name' => 'Góc Nhìn', 'singular_name' => 'Lời nhắn', 'add_new_item' => 'Thêm Lời Nhắn'),
         'public' => true,
         'supports' => array('title', 'editor', 'thumbnail'),
         'menu_icon' => 'dashicons-testimonial',
     ));
-
-    // 3. Schedule (Lịch Trình)
+    // Lịch trình (Schedule)
     register_post_type('schedule', array(
-        'labels' => array(
-            'name' => 'Lịch Trình',
-            'singular_name' => 'Địa điểm',
-            'add_new_item' => 'Thêm Địa Điểm Mới',
-        ),
+        'labels' => array('name' => 'Lịch Trình', 'singular_name' => 'Địa điểm', 'add_new_item' => 'Thêm Địa Điểm Mới'),
         'public' => true,
         'supports' => array('title', 'thumbnail'),
         'menu_icon' => 'dashicons-calendar-alt',
     ));
-
-    // 4. Merch (Sản Phẩm Liên Kết)
+    // Sản phẩm (Merch)
     register_post_type('merch', array(
-        'labels' => array(
-            'name' => 'Sản Phẩm',
-            'singular_name' => 'Sản phẩm',
-            'add_new_item' => 'Thêm Sản Phẩm Mới',
-        ),
+        'labels' => array('name' => 'Sản Phẩm', 'singular_name' => 'Sản phẩm', 'add_new_item' => 'Thêm Sản Phẩm Mới'),
         'public' => true,
         'supports' => array('title', 'thumbnail'),
         'menu_icon' => 'dashicons-cart',
     ));
 }
 
-<?php
-// Thêm file export ACF nếu có
+// KHỞI TẠO TRƯỜNG DỮ LIỆU ĐỘNG (ACF FIELDS)
 add_action('acf/init', 'cherry_acf_add_local_field_groups');
 function cherry_acf_add_local_field_groups() {
-    
     // Artwork Meta
     acf_add_local_field_group(array(
         'key' => 'group_artwork_meta',
         'title' => 'Thông tin Tranh',
         'fields' => array(
-            array(
-                'key' => 'field_art_meta',
-                'label' => 'Năm sáng tác / kích thước / chất liệu',
-                'name' => 'art_meta',
-                'type' => 'text',
-            ),
-            array(
-                'key' => 'field_art_price',
-                'label' => 'Giá',
-                'name' => 'art_price',
-                'type' => 'text',
-            ),
-            array(
-                'key' => 'field_art_sold',
-                'label' => 'Đã bán?',
-                'name' => 'art_sold',
-                'type' => 'true_false',
-                'ui' => 1,
-            ),
-            array(
-                'key' => 'field_art_online',
-                'label' => 'Hiển thị Online?',
-                'name' => 'art_online',
-                'type' => 'true_false',
-                'ui' => 1,
-                'default_value' => 1,
-            ),
+            array('key' => 'field_art_meta', 'label' => 'Năm sáng tác / kích thước / chất liệu', 'name' => 'art_meta', 'type' => 'text'),
+            array('key' => 'field_art_price', 'label' => 'Giá', 'name' => 'art_price', 'type' => 'text'),
+            array('key' => 'field_art_sold', 'label' => 'Đã bán?', 'name' => 'art_sold', 'type' => 'true_false', 'ui' => 1),
+            array('key' => 'field_art_online', 'label' => 'Hiển thị Online?', 'name' => 'art_online', 'type' => 'true_false', 'ui' => 1, 'default_value' => 1),
         ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'artwork',
-                ),
-            ),
-        ),
+        'location' => array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'artwork'))),
     ));
 
     // Testimonial Meta
     acf_add_local_field_group(array(
         'key' => 'group_testimonial_meta',
-        'title' => 'Thông tin Tác giả Lời nhắn',
+        'title' => 'Thông tin',
         'fields' => array(
-            array(
-                'key' => 'field_testi_role',
-                'label' => 'Công việc / Chức vụ',
-                'name' => 'testi_role',
-                'type' => 'text',
-            ),
+            array('key' => 'field_testi_role', 'label' => 'Công việc / Chức vụ', 'name' => 'testi_role', 'type' => 'text'),
         ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'testimonial',
-                ),
-            ),
-        ),
+        'location' => array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'testimonial'))),
     ));
 
     // Schedule Meta
     acf_add_local_field_group(array(
         'key' => 'group_schedule_meta',
-        'title' => 'Thông tin Lịch trình',
+        'title' => 'Thông tin',
         'fields' => array(
-            array(
-                'key' => 'field_schedule_time',
-                'label' => 'Thời gian',
-                'name' => 'schedule_time',
-                'type' => 'text',
-            ),
-            array(
-                'key' => 'field_schedule_address',
-                'label' => 'Địa chỉ cụ thể',
-                'name' => 'schedule_address',
-                'type' => 'text',
-            ),
+            array('key' => 'field_schedule_time', 'label' => 'Thời gian', 'name' => 'schedule_time', 'type' => 'text'),
+            array('key' => 'field_schedule_address', 'label' => 'Địa chỉ cụ thể', 'name' => 'schedule_address', 'type' => 'text'),
         ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'schedule',
-                ),
-            ),
-        ),
+        'location' => array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'schedule'))),
     ));
 
     // Merch Meta
@@ -182,22 +95,9 @@ function cherry_acf_add_local_field_groups() {
         'key' => 'group_merch_meta',
         'title' => 'Thông tin Sản phẩm',
         'fields' => array(
-            array(
-                'key' => 'field_merch_link',
-                'label' => 'Link liên kết',
-                'name' => 'merch_link',
-                'type' => 'url',
-            ),
+            array('key' => 'field_merch_link', 'label' => 'Link liên kết', 'name' => 'merch_link', 'type' => 'url'),
         ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'merch',
-                ),
-            ),
-        ),
+        'location' => array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'merch'))),
     ));
 
     // Hero Meta (Front Page)
@@ -205,43 +105,19 @@ function cherry_acf_add_local_field_groups() {
         'key' => 'group_hero_meta',
         'title' => 'Hero Banner',
         'fields' => array(
-            array(
-                'key' => 'field_hero_bg_pc',
-                'label' => 'Background PC',
-                'name' => 'hero_bg_pc',
-                'type' => 'image',
-                'return_format' => 'url',
-            ),
-            array(
-                'key' => 'field_hero_bg_mobile',
-                'label' => 'Background Mobile',
-                'name' => 'hero_bg_mobile',
-                'type' => 'image',
-                'return_format' => 'url',
-            ),
+            array('key' => 'field_hero_bg_pc', 'label' => 'Background PC', 'name' => 'hero_bg_pc', 'type' => 'image', 'return_format' => 'url'),
+            array('key' => 'field_hero_bg_mobile', 'label' => 'Background Mobile', 'name' => 'hero_bg_mobile', 'type' => 'image', 'return_format' => 'url'),
         ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'page_type',
-                    'operator' => '==',
-                    'value' => 'front_page',
-                ),
-            ),
-        ),
+        'location' => array(array(array('param' => 'page_type', 'operator' => '==', 'value' => 'front_page'))),
     ));
 }
-
-
-
-
 
 // ==========================================
 // CHẾ ĐỘ BẢO TRÌ (MAINTENANCE MODE)
 // ==========================================
-$cherry_maintenance_mode = false; 
+ = false; 
 
-if ($cherry_maintenance_mode) {
+if () {
     add_action('template_redirect', 'cherry_enable_maintenance_mode');
 }
 function cherry_enable_maintenance_mode() {
@@ -256,7 +132,7 @@ function cherry_enable_maintenance_mode() {
 // ==========================================
 function cherry_register_strings() {
     if (function_exists('pll_register_string')) {
-        $strings = array(
+         = array(
             'Triển lãm nghệ thuật Vị Nhân Sinh',
             'Lan tỏa yêu thương qua từng nét vẽ. Mỗi tác phẩm là một câu chuyện, một hy vọng gửi đến các em nhỏ có hoàn cảnh khó khăn.',
             'Khám Phá Bộ Sưu Tập',
@@ -318,102 +194,99 @@ function cherry_register_strings() {
             'Trang bạn đang tìm kiếm có thể đã bị xóa, đổi tên hoặc tạm thời không truy cập được.',
             'Trở về Trang chủ'
         );
-        foreach($strings as $str) {
-            pll_register_string('cherry_theme', $str, 'Cherry Theme');
+        foreach( as ) {
+            pll_register_string('cherry_theme', , 'Cherry Theme');
         }
     }
 }
 add_action('init', 'cherry_register_strings');
 
-function cherry_e($string) {
+function cherry_e() {
     if (function_exists('pll_e')) {
-        pll_e($string);
+        pll_e();
     } else {
-        echo $string;
+        echo ;
     }
 }
-function cherry__($string) {
+function cherry__() {
     if (function_exists('pll__')) {
-        return pll__($string);
+        return pll__();
     }
-    return $string;
+    return ;
 }
 
 // ==========================================
 // TÙY CHỈNH HIỂN THỊ CỘT TRONG BẢNG ADMIN
 // ==========================================
-// 1. CỘT CHO BỘ SƯU TẬP TRANH
 add_filter('manage_artwork_posts_columns', 'cherry_set_custom_edit_artwork_columns');
-function cherry_set_custom_edit_artwork_columns($columns) {
-    $new_columns = array();
-    $new_columns['cb'] = $columns['cb'];
-    $new_columns['art_thumb'] = 'Hình Tranh';
-    $new_columns['title'] = $columns['title'];
-    $new_columns['art_meta'] = 'Thông tin (Năm/Chất liệu)';
-    $new_columns['art_price'] = 'Giá bán';
-    $new_columns['art_sold'] = 'Tình trạng';
-    $new_columns['art_online'] = 'Hiển thị Web';
-    $new_columns['date'] = $columns['date'];
-    return $new_columns;
+function cherry_set_custom_edit_artwork_columns() {
+     = array();
+    ['cb'] = ['cb'];
+    ['art_thumb'] = 'Hình Tranh';
+    ['title'] = ['title'];
+    ['art_meta'] = 'Thông tin (Năm/Chất liệu)';
+    ['art_price'] = 'Giá bán';
+    ['art_sold'] = 'Tình trạng';
+    ['art_online'] = 'Hiển thị Web';
+    ['date'] = ['date'];
+    return ;
 }
 
 add_action('manage_artwork_posts_custom_column', 'cherry_custom_artwork_column', 10, 2);
-function cherry_custom_artwork_column($column, $post_id) {
-    switch ($column) {
+function cherry_custom_artwork_column(, ) {
+    switch () {
         case 'art_thumb':
-            if (has_post_thumbnail($post_id)) {
-                echo get_the_post_thumbnail($post_id, array(60, 60));
+            if (has_post_thumbnail()) {
+                echo get_the_post_thumbnail(, array(60, 60));
             } else {
                 echo '<span style="color:#999;">Chưa có ảnh</span>';
             }
             break;
         case 'art_meta':
-            echo esc_html(get_field('art_meta', $post_id));
+            echo esc_html(get_field('art_meta', ));
             break;
         case 'art_price':
-            echo '<strong>' . esc_html(get_field('art_price', $post_id)) . '</strong>';
+            echo '<strong>' . esc_html(get_field('art_price', )) . '</strong>';
             break;
         case 'art_sold':
-            $sold = get_field('art_sold', $post_id);
-            echo $sold ? '<span style="color:red; font-weight:bold;">🔴 Đã Bán</span>' : '<span style="color:green; font-weight:bold;">🟢 Còn Trống</span>';
+             = get_field('art_sold', );
+            echo  ? '<span style="color:red; font-weight:bold;">🔴 Đã Bán</span>' : '<span style="color:green; font-weight:bold;">🟢 Còn Trống</span>';
             break;
         case 'art_online':
-            $online = get_field('art_online', $post_id);
-            echo $online ? '<span style="color:blue; font-weight:bold;">🌐 Đang Online</span>' : '<span style="color:gray;">Ẩn (Offline)</span>';
+             = get_field('art_online', );
+            echo  ? '<span style="color:blue; font-weight:bold;">🌐 Đang Online</span>' : '<span style="color:gray;">Ẩn (Offline)</span>';
             break;
     }
 }
 
-// 2. CỘT CHO SẢN PHẨM
 add_filter('manage_merch_posts_columns', 'cherry_set_custom_edit_merch_columns');
-function cherry_set_custom_edit_merch_columns($columns) {
-    $new_columns = array();
-    $new_columns['cb'] = $columns['cb'];
-    $new_columns['merch_thumb'] = 'Ảnh Sản Phẩm';
-    $new_columns['title'] = $columns['title'];
-    $new_columns['merch_link'] = 'Link trỏ về';
-    $new_columns['date'] = $columns['date'];
-    return $new_columns;
+function cherry_set_custom_edit_merch_columns() {
+     = array();
+    ['cb'] = ['cb'];
+    ['merch_thumb'] = 'Ảnh Sản Phẩm';
+    ['title'] = ['title'];
+    ['merch_link'] = 'Link trỏ về';
+    ['date'] = ['date'];
+    return ;
 }
 
 add_action('manage_merch_posts_custom_column', 'cherry_custom_merch_column', 10, 2);
-function cherry_custom_merch_column($column, $post_id) {
-    switch ($column) {
+function cherry_custom_merch_column(, ) {
+    switch () {
         case 'merch_thumb':
-            if (has_post_thumbnail($post_id)) {
-                echo get_the_post_thumbnail($post_id, array(60, 60));
+            if (has_post_thumbnail()) {
+                echo get_the_post_thumbnail(, array(60, 60));
             }
             break;
         case 'merch_link':
-            $link = get_field('merch_link', $post_id);
-            if ($link) {
-                echo '<a href="'.esc_url($link).'" target="_blank" style="color:#0071a1; font-weight:500;">🔗 Click xem link</a>';
+             = get_field('merch_link', );
+            if () {
+                echo '<a href="'.esc_url().'" target="_blank" style="color:#0071a1; font-weight:500;">🔗 Click xem link</a>';
             }
             break;
     }
 }
 
-// 3. CHỈNH CSS CHO BẢNG ADMIN
 add_action('admin_head', 'cherry_custom_admin_css');
 function cherry_custom_admin_css() {
     echo '<style>
