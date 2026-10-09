@@ -25,7 +25,8 @@ if(empty($meta_desc)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" content="notranslate">
     
-    <!-- Primary Meta Tags (Dynamic SEO) -->
+    <!-- Primary Meta Tags -->
+    <title><?php echo esc_attr($meta_title); ?></title>
     <meta name="title" content="<?php echo esc_attr($meta_title); ?>">
     <meta name="description" content="<?php echo esc_attr($meta_desc); ?>">
     <meta name="keywords" content="Cherry, K COFFEE, Triển lãm tranh, Họa sĩ nhí, Từ thiện, Sắc màu yêu thương, Nghệ thuật, Gây quỹ">

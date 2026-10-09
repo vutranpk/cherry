@@ -1,0 +1,239 @@
+﻿<script>
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // --- ADVANCED GSAP ANIMATIONS & EFFECTS ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Sync Lenis with GSAP ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000) });
+        gsap.ticker.lagSmoothing(0);
+
+        // 1. Text Split Reveal for Hero Title
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            const lines = heroTitle.innerHTML.split(/<br\s*\/?>/i);
+            heroTitle.innerHTML = lines.map(line => `<span style="display:block; overflow:hidden; padding-bottom: 10px;"><span class="hero-line-inner" style="display:block; transform: translateY(115%);">${line}</span></span>`).join('');
+        }
+
+        const tlHero = gsap.timeline();
+        tlHero.to(".hero-line-inner", { y: "0%", duration: 1.2, stagger: 0.15, ease: "expo.out", delay: 0.2 })
+              .from(".hero-desc", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8")
+              .from(".hero .pill-btn", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.9")
+              .fromTo(".hero-img-wrap img", { clipPath: "inset(20% 20% 20% 20%)", filter: "blur(10px)", scale: 1.3 }, { clipPath: "inset(0% 0% 0% 0%)", filter: "blur(0px)", scale: 1, duration: 1.8, ease: "expo.inOut", clearProps: "clipPath,filter" }, "-=1.2")
+              .from(".circle-btn", { scale: 0, opacity: 0, duration: 0.8, ease: "back.out(1.7)", clearProps: "all" }, "-=1");
+
+        // 2. Magnetic Buttons (Interactive Physics)
+        const magnetBtns = document.querySelectorAll('.circle-btn');
+        magnetBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.4;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.4;
+                gsap.to(btn, { x: x, y: y, duration: 0.4, ease: "power2.out" });
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+            });
+        });
+
+        // 3. Velocity Skew Effect (Scroll-driven inertia)
+        lenis.on('scroll', (e) => {
+            const skewY = Math.max(-3, Math.min(3, e.velocity * 0.15));
+            gsap.to('.news-card, .merch-card', { 
+                skewY: skewY, 
+                duration: 0.2, 
+                overwrite: "auto",
+                transformOrigin: "center center"
+            });
+            // Snap back
+            gsap.to('.news-card, .merch-card', { skewY: 0, duration: 0.6, ease: "power3.out", delay: 0.1 });
+        });
+
+        // Horizontal velocity skew for gallery
+        let lastHScroll = 0;
+        let lastHTime = Date.now();
+        const hTrack = document.querySelector('.horizontal-track');
+        if (hTrack) {
+            hTrack.addEventListener('scroll', () => {
+                const now = Date.now();
+                const dx = hTrack.scrollLeft - lastHScroll;
+                const dt = now - lastHTime;
+                const vel = dx / (dt || 1);
+                const skewX = Math.max(-5, Math.min(5, vel * -1.5));
+                
+                gsap.to('.art-card img', { skewX: skewX, scale: 1.02, duration: 0.3, overwrite: "auto" });
+                gsap.to('.art-card img', { skewX: 0, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.4)", delay: 0.1 });
+                
+                lastHScroll = hTrack.scrollLeft;
+                lastHTime = now;
+            });
+        }
+
+        // 4. Infinite Marquee + Parallax Watermarks
+        gsap.utils.toArray('.watermark').forEach(wm => {
+            const text = wm.innerText.trim();
+            // Duplicate text to create a seamless loop (adding a bullet dot for aesthetics)
+            const repeatCount = 8;
+            let trackHTML = '<div class="wm-track">';
+            for(let i=0; i<repeatCount; i++) {
+                trackHTML += `<span style="padding-right: 5vw;">${text} &bull;</span>`;
+            }
+            trackHTML += '</div>';
+            wm.innerHTML = trackHTML;
+
+            const track = wm.querySelector('.wm-track');
+            
+            // Infinite horizontal crawl (-50% because we doubled the necessary width)
+            gsap.to(track, { xPercent: -50, duration: 25, repeat: -1, ease: "none" });
+            
+            // Vertical parallax on scroll
+            gsap.to(wm, {
+                y: 150, 
+                ease: "none",
+                scrollTrigger: { trigger: wm.parentElement, start: "top bottom", end: "bottom top", scrub: true }
+            });
+        });
+
+        // 5. Cinematic Image Reveals (Clip-Path + Image Scale Parallax)
+        gsap.utils.toArray('.author-img-wrap').forEach(wrap => {
+            const img = wrap.querySelector('img');
+            const tl = gsap.timeline({
+                scrollTrigger: { trigger: wrap, start: "top 80%" }
+            });
+            tl.fromTo(wrap, { clipPath: "polygon(0% 20%, 100% 20%, 100% 80%, 0% 80%)", filter: "grayscale(100%) blur(5px)" },
+                            { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", filter: "grayscale(0%) blur(0px)", duration: 1.6, ease: "expo.inOut" })
+              .fromTo(img, { scale: 1.4 }, { scale: 1, duration: 2, ease: "power3.out" }, "-=1.6");
+        });
+
+        // 6. Global Section Titles Reveal (Words Stagger)
+        gsap.utils.toArray('.vibe-heading:not(.hero-title)').forEach(heading => {
+            const text = heading.innerText;
+            heading.innerHTML = text.split(' ').map(word => `<span style="display:inline-block; overflow:hidden;"><span class="vibe-word" style="display:inline-block; transform: translateY(110%);">${word}</span></span>`).join(' ');
+            
+            gsap.to(heading.querySelectorAll('.vibe-word'), {
+                scrollTrigger: { trigger: heading, start: "top 85%" },
+                y: "0%", duration: 1, stagger: 0.08, ease: "power4.out"
+            });
+        });
+
+        // 7. Staggered Elements Reveal
+        gsap.from(".news-card", { scrollTrigger: { trigger: ".news-grid", start: "top 85%" }, y: 80, opacity: 0, duration: 1, stagger: 0.15, ease: "expo.out" });
+
+        // XÃ¡Â»Â­ lÃƒÂ½ cÃƒÂ¡c link neo (anchor) mÃ†Â°Ã¡Â»Â£t mÃƒÂ  vÃ¡Â»â€ºi Lenis
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        lenis.scrollTo(targetElement);
+                        
+                        // Ã„ÂÃƒÂ³ng menu trÃƒÂªn mobile
+                        const navLinks = document.getElementById('nav-links');
+                        const hamburger = document.getElementById('hamburger');
+                        if (navLinks && navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    }
+                } else {
+                    // XÃ¡Â»Â­ lÃƒÂ½ click href="#" (Logo hoÃ¡ÂºÂ·c nÃƒÂºt Go Top)
+                    e.preventDefault();
+                    lenis.scrollTo(0);
+                }
+            });
+        });
+
+        // HiÃ¡Â»Æ’n thÃ¡Â»â€¹/Ã¡ÂºÂ¨n nÃƒÂºt Go Top khi cuÃ¡Â»â„¢n
+        const goTopBtn = document.getElementById('gotop-btn');
+        if (goTopBtn) {
+            lenis.on('scroll', (e) => {
+                if (window.scrollY > 500) {
+                    goTopBtn.classList.add('is-visible');
+                } else {
+                    goTopBtn.classList.remove('is-visible');
+                }
+            });
+        }
+        // 8. Vibe Assistant Logic
+        const assistant = document.getElementById('vibe-assistant');
+        const assistantText = document.getElementById('assistant-text');
+        
+        if (assistant && assistantText) {
+            const assistantMessages = {
+                'hero': 'Chào bạn, cùng khám phá hành trình yêu thương nhé!',
+                'project-info': 'Những con số minh chứng cho một hành trình ý nghĩa.',
+                'author': 'Cô bé họa sĩ nhí với trái tim nhân ái.',
+                'gallery': 'Cuộn ngang để chiêm ngưỡng 130+ tác phẩm.',
+                'history': 'Nhìn lại những cột mốc đáng nhớ.',
+                'merch': 'Sở hữu vật phẩm để đóng góp vào quỹ từ thiện.',
+                'schedule': 'Đừng bỏ lỡ thông tin sự kiện sắp tới.',
+                'news': 'Hành trình của Cherry qua góc nhìn báo chí.',
+                'contact': 'Hãy để lại lời nhắn yêu thương cho Cherry!'
+            };
+
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                        const id = entry.target.id;
+                        if (assistantMessages[id] && assistantText.innerText !== assistantMessages[id]) {
+                            gsap.to(assistantText, {
+                                y: -10, opacity: 0, duration: 0.3, 
+                                onComplete: () => {
+                                    assistantText.innerText = assistantMessages[id];
+                                    gsap.fromTo(assistantText, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" });
+                                }
+                            });
+                        }
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            sections.forEach(sec => observer.observe(sec));
+
+            lenis.on('scroll', (e) => {
+                const vel = e.velocity;
+                const yOffset = Math.max(-25, Math.min(25, vel * -1.5));
+                const skew = Math.max(-3, Math.min(3, vel * -0.2));
+                
+                gsap.to(assistant, {
+                    y: yOffset,
+                    skewY: skew,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    overwrite: "auto"
+                });
+                
+                gsap.to(assistant, {
+                    y: 0,
+                    skewY: 0,
+                    duration: 0.8,
+                    ease: "elastic.out(1, 0.4)",
+                    delay: 0.1
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
