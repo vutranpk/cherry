@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Tắt Gutenberg cho các CPT nếu cần, hoặc để mặc định
 add_action('after_setup_theme', 'cherry_theme_setup');
 function cherry_theme_setup() {
@@ -75,7 +75,7 @@ function cherry_register_cpts() {
         'menu_icon' => 'dashicons-cart',
     ));
 }
-?>
+
 <?php
 // Thêm file export ACF nếu có
 add_action('acf/init', 'cherry_acf_add_local_field_groups');
@@ -231,7 +231,7 @@ function cherry_acf_add_local_field_groups() {
         ),
     ));
 }
-?>
+
 
 
 // ==========================================
