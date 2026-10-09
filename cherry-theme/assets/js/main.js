@@ -1,4 +1,5 @@
-﻿
+﻿document.addEventListener('DOMContentLoaded', () => {
+
         (function() {
             try {
                 var savedTheme = localStorage.getItem('theme') || 'light';
@@ -448,3 +449,5 @@
             });
         }
     
+
+});

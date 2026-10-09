@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Name: Homepage
  */
@@ -11,15 +11,15 @@ get_header(); ?>
             <div class="hero-content">
                 <p class="tagline"><span class="brand-kcoffee">K&nbsp;COFFEE</span> x Cherry</p>
                 <h1 class="vibe-heading hero-title">
-                    Chia sẻ<br>yêu thương
+                    Chia sáº»<br>yÃªu thÆ°Æ¡ng
                 </h1>
                 <p class="vibe-text hero-desc">
-                    Triển lãm nghệ thuật đánh dấu hành trình thiện nguyện đầy cảm hứng của cô họa sĩ nhí 13 tuổi.
+                    Triá»ƒn lÃ£m nghá»‡ thuáº­t Ä‘Ã¡nh dáº¥u hÃ nh trÃ¬nh thiá»‡n nguyá»‡n Ä‘áº§y cáº£m há»©ng cá»§a cÃ´ há»a sÄ© nhÃ­ 13 tuá»•i.
                 </p>
             </div>
             <div class="hero-img-wrap">
                 <img id="hero-random-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/bannerhero.jpg" alt="Cherry Artwork">
-                <a href="#gallery" class="circle-btn">Khám phá<br>Gallery<br><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="margin-top: 5px;"><line x1="5" y1="5" x2="19" y2="19"></line><polyline points="10 19 19 19 19 10"></polyline></svg></a>
+                <a href="#gallery" class="circle-btn">KhÃ¡m phÃ¡<br>Gallery<br><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="margin-top: 5px;"><line x1="5" y1="5" x2="19" y2="19"></line><polyline points="10 19 19 19 19 10"></polyline></svg></a>
             </div>
         </div>
     </section>
@@ -28,23 +28,23 @@ get_header(); ?>
     <section id="project-info">
         <div class="project-metrics">
             <div class="metric-item metric-item-featured">
-                <h3 class="vibe-heading" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px;">Chia sẻ<br>Yêu thương</h3>
+                <h3 class="vibe-heading" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px;">Chia sáº»<br>YÃªu thÆ°Æ¡ng</h3>
                 <p class="metric-desc"><span class="brand-kcoffee">K&nbsp;COFFEE</span> &times; CHERRY</p>
             </div>
             <div class="metric-item">
-                <span class="metric-label">Đóng góp</span>
+                <span class="metric-label">ÄÃ³ng gÃ³p</span>
                 <h3 class="metric-value">80%</h3>
-                <p class="metric-desc">Doanh thu bán tranh</p>
+                <p class="metric-desc">Doanh thu bÃ¡n tranh</p>
             </div>
             <div class="metric-item">
-                <span class="metric-label">Quy mô</span>
+                <span class="metric-label">Quy mÃ´</span>
                 <h3 class="metric-value">130+</h3>
-                <p class="metric-desc">Tác phẩm nghệ thuật</p>
+                <p class="metric-desc">TÃ¡c pháº©m nghá»‡ thuáº­t</p>
             </div>
             <div class="metric-item">
-                <span class="metric-label">Mục tiêu</span>
-                <h3 class="metric-value" style="font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1.1; margin-top: auto; padding-top: 15px; font-weight: var(--fw-medium);">BV. Nhi Đồng<br>1 & 2</h3>
-                <p class="metric-desc">Hỗ trợ bệnh nhi</p>
+                <span class="metric-label">Má»¥c tiÃªu</span>
+                <h3 class="metric-value" style="font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1.1; margin-top: auto; padding-top: 15px; font-weight: var(--fw-medium);">BV. Nhi Äá»“ng<br>1 & 2</h3>
+                <p class="metric-desc">Há»— trá»£ bá»‡nh nhi</p>
             </div>
         </div>
     </section>
@@ -53,20 +53,20 @@ get_header(); ?>
     <section id="author">
         <div class="author-split">
             <div class="author-content-wrap">
-                <p class="tagline">Tác giả</p>
+                <p class="tagline">TÃ¡c giáº£</p>
                 <h2 class="vibe-heading hero-title">Cherry</h2>
                 <p class="vibe-text" style="color: var(--c-text);">
-                    <i>HÀNH TRÌNH CHIA SẺ YÊU THƯƠNG</i>
+                    <i>HÃ€NH TRÃŒNH CHIA Sáºº YÃŠU THÆ¯Æ NG</i>
                 </p>
                 <p class="vibe-text" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
-                    Cherry, cô bé 11 tuổi đến từ TP.HCM, được biết đến như một "họa sĩ nhí" với khả năng sáng tạo và tình yêu đặc biệt dành cho hội họa.
+                    Cherry, cÃ´ bÃ© 11 tuá»•i Ä‘áº¿n tá»« TP.HCM, Ä‘Æ°á»£c biáº¿t Ä‘áº¿n nhÆ° má»™t "há»a sÄ© nhÃ­" vá»›i kháº£ nÄƒng sÃ¡ng táº¡o vÃ  tÃ¬nh yÃªu Ä‘áº·c biá»‡t dÃ nh cho há»™i há»a.
                 </p>
                 <p class="vibe-text" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
-                    Cherry bắt đầu cầm cọ từ năm 3 tuổi. Từ những nét vẽ đầu tiên, hội họa dần trở thành một phần tự nhiên trong cuộc sống của em. Đến nay, Cherry đã sáng tác khoảng 130 bức tranh, mang phong cách giàu màu sắc, tự do và phóng khoáng.
+                    Cherry báº¯t Ä‘áº§u cáº§m cá» tá»« nÄƒm 3 tuá»•i. Tá»« nhá»¯ng nÃ©t váº½ Ä‘áº§u tiÃªn, há»™i há»a dáº§n trá»Ÿ thÃ nh má»™t pháº§n tá»± nhiÃªn trong cuá»™c sá»‘ng cá»§a em. Äáº¿n nay, Cherry Ä‘Ã£ sÃ¡ng tÃ¡c khoáº£ng 130 bá»©c tranh, mang phong cÃ¡ch giÃ u mÃ u sáº¯c, tá»± do vÃ  phÃ³ng khoÃ¡ng.
                 </p>
             </div>
             <div class="author-img-wrap">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cherry-artist.jpg" alt="Họa sĩ Cherry" class="author-img-full">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cherry-artist.jpg" alt="Há»a sÄ© Cherry" class="author-img-full">
             </div>
         </div>
     </section>
@@ -79,17 +79,17 @@ get_header(); ?>
                   
                   <!-- Intro Title -->
                   <div class="gallery-intro">
-                      <p class="tagline">Trạm dừng cảm xúc</p>
-                      <h2 class="vibe-heading">Góc Nhỏ <br/>Của Cherry</h2>
-                      <p class="vibe-text">Khám phá không gian trưng bày độc quyền, nơi nghệ thuật hòa quyện cùng sẻ chia. Vuốt ngang để tham quan phòng tranh và cùng chúng tôi thắp lên hy vọng cho các em nhỏ.</p>
-                      <a href="#" class="pill-btn btn-open-gallery mobile-view-all" style="margin-top: 20px;">Xem Tất Cả Tranh</a>
+                      <p class="tagline">Tráº¡m dá»«ng cáº£m xÃºc</p>
+                      <h2 class="vibe-heading">GÃ³c Nhá» <br/>Cá»§a Cherry</h2>
+                      <p class="vibe-text">KhÃ¡m phÃ¡ khÃ´ng gian trÆ°ng bÃ y Ä‘á»™c quyá»n, nÆ¡i nghá»‡ thuáº­t hÃ²a quyá»‡n cÃ¹ng sáº» chia. Vuá»‘t ngang Ä‘á»ƒ tham quan phÃ²ng tranh vÃ  cÃ¹ng chÃºng tÃ´i tháº¯p lÃªn hy vá»ng cho cÃ¡c em nhá».</p>
+                      <a href="#" class="pill-btn btn-open-gallery mobile-view-all" style="margin-top: 20px;">Xem Táº¥t Cáº£ Tranh</a>
                   </div>
   
                   <?php
-                  // Lấy danh sách tranh
+                  // Láº¥y danh sÃ¡ch tranh
                   $art_query = new WP_Query(array(
                       'post_type' => 'artwork',
-                      'posts_per_page' => 10, // Hiển thị 10 bức trong slider ngang
+                      'posts_per_page' => 10, // Hiá»ƒn thá»‹ 10 bá»©c trong slider ngang
                       'orderby' => 'date',
                       'order' => 'DESC'
                   ));
@@ -99,7 +99,7 @@ get_header(); ?>
                       $i = 0;
                       while ($art_query->have_posts()) : $art_query->the_post();
                           $status = get_field('status');
-                          $sold_text = ($status == 'sold') ? 'Đã bán' : '';
+                          $sold_text = ($status == 'sold') ? 'ÄÃ£ bÃ¡n' : '';
                           $price = get_field('price');
                           $year = get_field('year');
                           $material = get_field('material');
@@ -113,7 +113,7 @@ get_header(); ?>
                   <!-- Card -->
                   <div class="art-card <?php echo $class; ?>">
                       <div class="art-card-img-wrap">
-                          <a href="<?php echo esc_url($img_url); ?>" class="glightbox" data-gallery="cherry-gallery" data-description="<?php echo esc_attr($meta_desc); ?>">
+                          <a href="<?php echo esc_url($img_url); ?>" class="glightbox" data-fancybox="artworks" data-description="<?php echo esc_attr($meta_desc); ?>">
                               <img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>">
                           </a>
                           <?php if ($sold_text): ?>
@@ -134,9 +134,9 @@ get_header(); ?>
 
                   <!-- Ending Title -->
                   <div class="gallery-ending">
-                      <h2 class="gallery-ending-title">Yêu thương<br/>Vẫn còn tiếp nối</h2>
-                      <p class="vibe-text gallery-ending-desc">Khám phá thêm hàng chục tác phẩm khác trong bộ sưu tập đặc biệt của Cherry. Mỗi bức tranh là một tia hy vọng mới.</p>
-                      <a href="#" class="pill-btn btn-open-gallery">Xem Tất Cả Tranh</a>
+                      <h2 class="gallery-ending-title">YÃªu thÆ°Æ¡ng<br/>Váº«n cÃ²n tiáº¿p ná»‘i</h2>
+                      <p class="vibe-text gallery-ending-desc">KhÃ¡m phÃ¡ thÃªm hÃ ng chá»¥c tÃ¡c pháº©m khÃ¡c trong bá»™ sÆ°u táº­p Ä‘áº·c biá»‡t cá»§a Cherry. Má»—i bá»©c tranh lÃ  má»™t tia hy vá»ng má»›i.</p>
+                      <a href="#" class="pill-btn btn-open-gallery">Xem Táº¥t Cáº£ Tranh</a>
                   </div>
             </div>
         </div>
@@ -145,24 +145,24 @@ get_header(); ?>
     <!-- IMPACT / HISTORY SECTION -->
     <section class="section-padding" id="history">
         <div class="container impact-container">
-            <p class="tagline">Hành Trình</p>
-            <h2 class="vibe-heading impact-heading">Chia sẻ yêu thương</h2>
+            <p class="tagline">HÃ nh TrÃ¬nh</p>
+            <h2 class="vibe-heading impact-heading">Chia sáº» yÃªu thÆ°Æ¡ng</h2>
             <p class="vibe-text impact-desc">
-                Năm 2024, Quỹ được thành lập, tạo nên sự kết nối giữa nghệ thuật và thiện nguyện. Những bức tranh được lan tỏa đến cộng đồng thông qua việc bán tranh và ứng dụng trên sản phẩm.
+                NÄƒm 2024, Quá»¹ Ä‘Æ°á»£c thÃ nh láº­p, táº¡o nÃªn sá»± káº¿t ná»‘i giá»¯a nghá»‡ thuáº­t vÃ  thiá»‡n nguyá»‡n. Nhá»¯ng bá»©c tranh Ä‘Æ°á»£c lan tá»a Ä‘áº¿n cá»™ng Ä‘á»“ng thÃ´ng qua viá»‡c bÃ¡n tranh vÃ  á»©ng dá»¥ng trÃªn sáº£n pháº©m.
             </p>
             
             <div class="impact-stats-wrap">
                 <div class="impact-stat">
                     <h3 class="impact-number vibe-heading">80+</h3>
-                    <p class="impact-label">Tác phẩm được đấu giá</p>
+                    <p class="impact-label">TÃ¡c pháº©m Ä‘Æ°á»£c Ä‘áº¥u giÃ¡</p>
                 </div>
                 <div class="impact-stat">
                     <h3 class="impact-number vibe-heading">200<span style="font-size: 0.5em">TR</span></h3>
-                    <p class="impact-label">Gây quỹ thành công</p>
+                    <p class="impact-label">GÃ¢y quá»¹ thÃ nh cÃ´ng</p>
                 </div>
                 <div class="impact-stat">
                     <h3 class="impact-number vibe-heading">03</h3>
-                    <p class="impact-label">Dự án cộng đồng</p>
+                    <p class="impact-label">Dá»± Ã¡n cá»™ng Ä‘á»“ng</p>
                 </div>
             </div>
         </div>
@@ -171,22 +171,22 @@ get_header(); ?>
     <!-- SCHEDULE SECTION -->
     <section class="section-padding" id="schedule">
         <div class="container">
-            <p class="tagline">Lịch trình</p>
-            <h2 class="vibe-heading schedule-heading">Triển lãm 2026</h2>
+            <p class="tagline">Lá»‹ch trÃ¬nh</p>
+            <h2 class="vibe-heading schedule-heading">Triá»ƒn lÃ£m 2026</h2>
             <div class="schedule-timeline">
                 <!-- Event 1 -->
                 <div class="schedule-item">
                     <div class="schedule-dot schedule-dot-active"></div>
                     <p class="schedule-date schedule-date-active">11/10 - 23/10/2026</p>
-                    <h3 class="schedule-venue"><span class="brand-kcoffee">K&nbsp;COFFEE</span> Mỹ Thái</h3>
-                    <p class="vibe-text">41 Đường 17, Khu phố Mỹ Thái 2, Phường Tân Phú, Quận 7, TP.HCM</p>
+                    <h3 class="schedule-venue"><span class="brand-kcoffee">K&nbsp;COFFEE</span> Má»¹ ThÃ¡i</h3>
+                    <p class="vibe-text">41 ÄÆ°á»ng 17, Khu phá»‘ Má»¹ ThÃ¡i 2, PhÆ°á»ng TÃ¢n PhÃº, Quáº­n 7, TP.HCM</p>
                 </div>
                 <!-- Event 2 -->
                 <div class="schedule-item">
                     <div class="schedule-dot schedule-dot-upcoming"></div>
                     <p class="schedule-date schedule-date-upcoming">25/10 - 07/11/2026</p>
-                    <h3 class="schedule-venue schedule-venue-upcoming"><span class="brand-kcoffee">K&nbsp;COFFEE</span> Nguyễn Thái Bình</h3>
-                    <p class="vibe-text">156-158 Nguyễn Thái Bình, Phường Bến Thành, Quận 1, TP.HCM</p>
+                    <h3 class="schedule-venue schedule-venue-upcoming"><span class="brand-kcoffee">K&nbsp;COFFEE</span> Nguyá»…n ThÃ¡i BÃ¬nh</h3>
+                    <p class="vibe-text">156-158 Nguyá»…n ThÃ¡i BÃ¬nh, PhÆ°á»ng Báº¿n ThÃ nh, Quáº­n 1, TP.HCM</p>
                 </div>
             </div>
         </div>
@@ -197,13 +197,13 @@ get_header(); ?>
         <div class="container">
             <div class="section-header" style="margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end;">
                 <div>
-                    <p class="tagline">Tin Tức</p>
-                    <h2 class="vibe-heading" style="margin-bottom: 0;">Bản Tin</h2>
+                    <p class="tagline">Tin Tá»©c</p>
+                    <h2 class="vibe-heading" style="margin-bottom: 0;">Báº£n Tin</h2>
                 </div>
-                <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="pill-btn mobile-view-all">Xem Tất Cả</a>
+                <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="pill-btn mobile-view-all">Xem Táº¥t Cáº£</a>
             </div>
             
-            <div class="news-grid">
+            <div class="news-slider">
                 <?php
                 $news_query = new WP_Query(array(
                     'post_type' => 'post',
@@ -220,7 +220,7 @@ get_header(); ?>
                     <div class="news-content">
                         <span class="news-date"><?php echo get_the_date('d/m/Y'); ?></span>
                         <h3 class="news-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                        <a href="<?php the_permalink(); ?>" class="news-link">Đọc tiếp <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: -4px; margin-left: 5px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                        <a href="<?php the_permalink(); ?>" class="news-link">Äá»c tiáº¿p <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" style="vertical-align: -4px; margin-left: 5px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
                     </div>
                 </div>
                 <?php 
@@ -234,3 +234,5 @@ get_header(); ?>
 
 </main>
 <?php get_footer(); ?>
+
+
